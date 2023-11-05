@@ -10,7 +10,7 @@ class CalculatorTest {
     @Test
     fun add3and4() {
         val calculator = Calculator()
-        assertEquals(7, calculator.add(3, 4), "3 + 4 should equal 6")
+        assertEquals(7, calculator.add(3, 4), "3 + 4 should equal 7")
     }
 
     @Test
