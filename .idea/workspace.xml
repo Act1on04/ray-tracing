@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19d009db-2e0f-4bd7-90ec-5d9bb3e86912" name="Changes" comment="Init">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Tuple.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/Canvas.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/TupleTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/Add3and4.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="19d009db-2e0f-4bd7-90ec-5d9bb3e86912" name="Changes" comment="Update">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Ray.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/CanvasTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/RayTest.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/CalculatorTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/CalculatorTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Canvas.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Canvas.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Tuple.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Tuple.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,8 +35,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
         <option value="Kotlin Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -81,12 +79,15 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Programming\LabWorks\Anhalt\ray-tracing\src\main\kotlin" />
+    </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Kotlin.CanvasKt">
-    <configuration name="VectorTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.RayTest">
+    <configuration name="RayTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -99,7 +100,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;VectorTest&quot;" />
+            <option value="&quot;RayTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -110,7 +111,7 @@
       <ForceTestExec>true</ForceTestExec>
       <method v="2" />
     </configuration>
-    <configuration name="VectorTest.max_a_b" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="RayTest.creatingAndQueryingRay" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -123,7 +124,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;VectorTest.max_a_b&quot;" />
+            <option value="&quot;RayTest.creatingAndQueryingRay&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -134,7 +135,7 @@
       <ForceTestExec>true</ForceTestExec>
       <method v="2" />
     </configuration>
-    <configuration name="VectorTest.min_a_b" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="RayTest.creatingRayFromTwoPoints" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -147,7 +148,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;VectorTest.min_a_b&quot;" />
+            <option value="&quot;RayTest.creatingRayFromTwoPoints&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -158,32 +159,44 @@
       <ForceTestExec>true</ForceTestExec>
       <method v="2" />
     </configuration>
-    <configuration name="TupleTest and 2 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ray-tracing.test" />
-      <option name="TEST_OBJECT" value="pattern" />
-      <patterns>
-        <pattern testClass="TupleTest" />
-        <pattern testClass="PointTest" />
-        <pattern testClass="VectorTest" />
-      </patterns>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="RayTest.distancePoint" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;RayTest.distancePoint&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>true</ForceTestExec>
+      <method v="2" />
     </configuration>
-    <configuration name="CanvasKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+    <configuration name="CanvasKt (1)" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="CanvasKt" />
-      <module name="ray-tracing.test" />
+      <module name="ray-tracing.main" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Kotlin.CanvasKt" />
-        <item itemvalue="JUnit.TupleTest and 2 more" />
-        <item itemvalue="Gradle.VectorTest.max_a_b" />
-        <item itemvalue="Gradle.VectorTest.min_a_b" />
-        <item itemvalue="Gradle.VectorTest" />
+        <item itemvalue="Gradle.RayTest" />
+        <item itemvalue="Gradle.RayTest.distancePoint" />
+        <item itemvalue="Gradle.RayTest.creatingRayFromTwoPoints" />
+        <item itemvalue="Gradle.RayTest.creatingAndQueryingRay" />
+        <item itemvalue="Kotlin.CanvasKt (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -201,7 +214,7 @@
       <workItem from="1698592515639" duration="138000" />
       <workItem from="1698593948652" duration="8890000" />
       <workItem from="1699173076204" duration="2457000" />
-      <workItem from="1699186828954" duration="15283000" />
+      <workItem from="1699186828954" duration="25267000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1697993562470</created>
@@ -217,7 +230,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697998962861</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Update">
+      <created>1699214255690</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1699214255690</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,6 +268,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Init" />
-    <option name="LAST_COMMIT_MESSAGE" value="Init" />
+    <MESSAGE value="Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update" />
   </component>
 </project>

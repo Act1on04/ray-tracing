@@ -3,7 +3,7 @@ import java.awt.image.BufferedImage
 import java.io.File
 import javax.imageio.ImageIO
 
-class Canvas(val width: Int, val height: Int, val imageName: String = "canvas") {
+class Canvas(val width: Int, val height: Int, val fileName: String = "") {
     // Создаем пустое изображение с заданными шириной и высотой
     private val image = BufferedImage(width, height, BufferedImage.TYPE_INT_RGB)
 
@@ -22,11 +22,11 @@ class Canvas(val width: Int, val height: Int, val imageName: String = "canvas") 
     }
 
     // Записываем содержимое всего изображения в файл (желательно в стандартном формате)
-    fun writeToFile(format: String = "png") {
+    fun writeToFile(file: String = "canvas") {
         // Если имя файла не задано, то генерируем случайное
-        val file = File("$imageName.$format")
+        val out = File("$file.png")
         // Записываем изображение в файл
-        ImageIO.write(image, format, file)
+        ImageIO.write(image, "png", out)
     }
 
     // Читаем файл изображения в наше внутреннее представление
@@ -46,8 +46,8 @@ class Canvas(val width: Int, val height: Int, val imageName: String = "canvas") 
     }
 
     // Записываем содержимое всего изображения в файл в формате PPM
-    fun writeToPPM() {
-        File("$imageName.ppm").bufferedWriter().use { out ->
+    fun writeToPPM(file: String = "canvas") {
+        File("$file.ppm").bufferedWriter().use { out ->
             out.write("P3\n")
             out.write("$width $height\n")
             out.write("255\n")
@@ -70,17 +70,17 @@ fun main(args:Array<String>) {
     val canvasWithoutName = Canvas(300, 300)
     println("Width: ${canvasWithoutName.width}")
     println("Height: ${canvasWithoutName.height}")
-    println("FileName: ${canvasWithoutName.imageName}")
+    println("FileName: ${canvasWithoutName.fileName}")
 
     val namedCanvas = Canvas(300, 300, "image")
     println("Width: ${namedCanvas.width}")
     println("Height: ${namedCanvas.height}")
-    println("FileName: ${namedCanvas.imageName}")
+    println("FileName: ${namedCanvas.fileName}")
 
     var canvasWithPixel = Canvas(200, 200, "MyImage")
     println("Width: ${canvasWithPixel.width}")
     println("Height: ${canvasWithPixel.height}")
-    println("FileName: ${canvasWithPixel.imageName}")
+    println("FileName: ${canvasWithPixel.fileName}")
 
     // заполнил канвас случайными значениями
     for (x in 0 until canvasWithPixel.width)

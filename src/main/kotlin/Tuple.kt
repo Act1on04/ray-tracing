@@ -2,7 +2,7 @@ import max
 import kotlin.math.*
 import kotlin.random.Random
 
-const val epsilon = 0.00001
+const val epsilon = 0.005
 
 private fun closeEnough(value:Double, other:Double) =
     abs(value - other) < epsilon
@@ -154,6 +154,14 @@ data class Color(val red:Double, val green:Double, val blue:Double) {
     }
 
     companion object {
+        // Сопоставляем имена для некоторых цветов
+        val BLACK = Color(0.0, 0.0, 0.0)
+        val RED = Color(1.0, 0.0, 0.0)
+        val GREEN = Color(0.0, 1.0, 0.0)
+        val BLUE = Color(0.0, 0.0, 1.0)
+        val WHITE = Color(1.0, 1.0, 1.0)
+
+        // Создаём Color со случайными значениями
         fun randomColor(): Color {
             val random = Random.Default
             val randomRed = random.nextDouble()
@@ -163,7 +171,12 @@ data class Color(val red:Double, val green:Double, val blue:Double) {
         }
 
         fun fromInt(rgb: Int): Color {
-            // Извлекаем красный, зеленый и синий компоненты из целого числа
+//            val r = ((rgb and 0xff0000) shr 16).toDouble() / 0xff
+//            val g = ((rgb and 0x00ff00) shr 8).toDouble() / 0xff
+//            val b = ((rgb and 0x0000ff)).toDouble() / 0xff
+//            return Color(r, g, b)
+
+//            Извлекаем красный, зеленый и синий компоненты из целого числа
             val red = (rgb shr 16) and 0xFF
             val green = (rgb shr 8) and 0xFF
             val blue = rgb and 0xFF
