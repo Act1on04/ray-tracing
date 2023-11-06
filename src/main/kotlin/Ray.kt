@@ -1,4 +1,5 @@
 import kotlin.math.abs
+import kotlin.math.pow
 import kotlin.math.sqrt
 
 class Ray(val origin:Point, val direction:Vector) {
@@ -15,8 +16,8 @@ class Ray(val origin:Point, val direction:Vector) {
 
 fun main(args:Array<String>) {
 
-    val width = 400
-    val height = 400
+    val width = 800
+    val height = 600
     val canvas = Canvas(width, height)
 
 
@@ -43,13 +44,11 @@ fun main(args:Array<String>) {
 //                return ray(origin, direction)
 //            end function
 
-            val world_x = (width / 2) - (x + 0.5)
-            val world_y = (height / 2) - (y + 0.5)
-//            println("x = $x, y=$y")
-//            println("px = $px, py=$py")
+            val worldX = (width / 2) - (x + 0.5)
+            val worldY = (height / 2) - (y + 0.5)
 
             // Создать луч из точки наблюдателя в направлении пикселя
-            val pixel = Point(world_x, world_y, 0.0) // Точка пикселя
+            val pixel = Point(worldX, worldY, 0.0) // Точка пикселя
             val origin = Point(0.0, 0.0, -100.0) // Точка наблюдателя
 
             val ray = Ray(origin, pixel) // Луч
@@ -70,19 +69,23 @@ fun main(args:Array<String>) {
     for (x in 0 until width) {
         for (y in 0 until height) {
             // Рассчитать координаты пикселя в мировой системе координат
-            val px = x - width / 2 + 0.5
-            val py = y - height / 2 + 0.5
+            val worldX = (width / 2) - (x + 0.5)
+            val worldY = (height / 2) - (y + 0.5)
 
             // Создать луч из точки наблюдателя в направлении пикселя
-            val pixel = Point(px, py, 0.0) // Точка пикселя
+            val pixel = Point(worldX, worldY, 0.0) // Точка пикселя
             val origin = Point(0.0, 0.0, -100.0) // Точка наблюдателя
             val ray = Ray(origin, pixel) // Луч
 
             // Рассчитать цвет для пикселя
             // Здесь вы должны реализовать логику трассировки лучей, которая зависит от вашей сцены и объектов
             // die x-und y- Koordinaten des Pixels (z ist 0) (dieser Wert wird manchmal auch als Launch ID bezeichnet.)
-            // координаты x и y пикселя (z равно 0) (это значение иногда называют идентификатором запуска).
-            val color = Color(pixel.x, pixel.y, 0.0)
+            // координаты x и y Canvas (z равно 0) (это значение иногда называют идентификатором запуска).
+            // Тут цвет будет расходиться от левого верхнего угла, так как там начало координат Canvas
+            val color = Color(x.toDouble() / width, y.toDouble() / height, 0.0)
+            // координаты x и y pixel (z равно 0).
+            // Тут цвет будет расходиться от центра, так как начало координат в центре
+//            val color = Color(abs(pixel.x.toDouble() / width), abs(pixel.y.toDouble() / height), 0.0)
 
             // Записать цвет на холст
             canvas.setPixel(x, y, color)
@@ -94,11 +97,11 @@ fun main(args:Array<String>) {
     for (x in 0 until width) {
         for (y in 0 until height) {
             // Рассчитать координаты пикселя в мировой системе координат
-            val px = x - width / 2 + 0.5
-            val py = y - height / 2 + 0.5
+            val worldX = (width / 2) - (x + 0.5)
+            val worldY = (height / 2) - (y + 0.5)
 
             // Создать луч из точки наблюдателя в направлении пикселя
-            val pixel = Point(px, py, 0.0) // Точка пикселя
+            val pixel = Point(worldX, worldY, 0.0) // Точка пикселя
             val origin = Point(0.0, 0.0, -100.0) // Точка наблюдателя
             val ray = Ray(origin, pixel) // Луч
 
@@ -106,8 +109,7 @@ fun main(args:Array<String>) {
             // Здесь вы должны реализовать логику трассировки лучей, которая зависит от вашей сцены и объектов
             // die Länge des Vektors vom Auge zum Pixel
             // В качестве цвета длина вектора от глаза до пикселя
-            val lenDirection = (pixel- origin).magnitude() / 255.0
-            val len2Direction = ray.direction.magnitude() / 255.0
+            val lenDirection = ( (pixel - origin).magnitude() / sqrt((width / 2.0).pow(2) + (height / 2.0).pow(2)) ).coerceIn(0.0, 1.0)
             val color = Color(lenDirection, lenDirection, lenDirection)
 
             // Записать цвет на холст

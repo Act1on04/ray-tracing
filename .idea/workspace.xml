@@ -4,17 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19d009db-2e0f-4bd7-90ec-5d9bb3e86912" name="Changes" comment="Init">
+    <list default="true" id="19d009db-2e0f-4bd7-90ec-5d9bb3e86912" name="Changes" comment="Update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Calculator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Calculator.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Canvas.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Canvas.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Ray.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Ray.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Tuple.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Tuple.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/CalculatorTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/CalculatorTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/CanvasTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/CanvasTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/RayTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/RayTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/TupleTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/TupleTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +19,16 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view />
+      </state>
+    </system>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -35,12 +38,28 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="InitTests" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="2X7po3eLoyzMhMscOnyCT7N5FfK" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="889f8c71-a47f-4e9d-926e-d896e13d751c" />
+        <option name="url" value="https://github.com/Act1on04/ray-tracing" />
+      </UrlAndAccount>
+    </option>
   </component>
+  <component name="ProjectId" id="2X7po3eLoyzMhMscOnyCT7N5FfK" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -59,12 +78,19 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Programming\LabWorks\Anhalt\ray-tracing\src\main\kotlin" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="" />
@@ -95,29 +121,7 @@
       <ForceTestExec>true</ForceTestExec>
       <method v="2" />
     </configuration>
-    <configuration name="Tests in 'ray-tracing.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <ForceTestExec>true</ForceTestExec>
-      <method v="2" />
-    </configuration>
-    <configuration name="TupleTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="RayTest.creatingRayFromTwoPoints" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -130,7 +134,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;TupleTest&quot;" />
+            <option value="&quot;RayTest.creatingRayFromTwoPoints&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -141,12 +145,29 @@
       <ForceTestExec>true</ForceTestExec>
       <method v="2" />
     </configuration>
-    <configuration name="CanvasKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="CanvasKt" />
-      <module name="ray-tracing.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="RayTest.distancePoint" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;RayTest.distancePoint&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>true</ForceTestExec>
+      <method v="2" />
     </configuration>
     <configuration name="RayKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="RayKt" />
@@ -155,13 +176,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TupleKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TupleKt" />
+      <module name="ray-tracing.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Kotlin.RayKt" />
-        <item itemvalue="Kotlin.CanvasKt" />
-        <item itemvalue="Gradle.Tests in 'ray-tracing.test'" />
-        <item itemvalue="Gradle.TupleTest" />
+        <item itemvalue="Kotlin.TupleKt" />
         <item itemvalue="Gradle.RayTest" />
+        <item itemvalue="Gradle.RayTest.distancePoint" />
+        <item itemvalue="Gradle.RayTest.creatingRayFromTwoPoints" />
       </list>
     </recent_temporary>
   </component>
@@ -173,8 +201,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1697990145367</updated>
-      <workItem from="1697990146450" duration="4768000" />
-      <workItem from="1699253632485" duration="21093000" />
+      <workItem from="1697990146450" duration="8867000" />
+      <workItem from="1698007591548" duration="384000" />
+      <workItem from="1698052339087" duration="2276000" />
+      <workItem from="1698592515639" duration="138000" />
+      <workItem from="1698593948652" duration="8890000" />
+      <workItem from="1699173076204" duration="2457000" />
+      <workItem from="1699186828954" duration="25427000" />
+      <workItem from="1699226769548" duration="733000" />
+      <workItem from="1699297754291" duration="8019000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1697993562470</created>
@@ -183,14 +218,59 @@
       <option name="project" value="LOCAL" />
       <updated>1697993562470</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Init">
+      <created>1697998962861</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1697998962861</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Update">
+      <created>1699214255690</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1699214255690</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Update">
+      <created>1699225289516</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1699225289516</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Init" />
-    <option name="LAST_COMMIT_MESSAGE" value="Init" />
+    <MESSAGE value="Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update" />
   </component>
 </project>
