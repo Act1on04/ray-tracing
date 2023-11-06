@@ -88,11 +88,12 @@ fun main(args:Array<String>) {
             canvasWithPixel.setPixel(x, y, Color.randomColor())
 
     // сохранил в файл MyImage.png
-    println(canvasWithPixel.writeToFile())
+    canvasWithPixel.writeToFile("MyImage")
     // считал из файла MyImage.png
     canvasWithPixel.readFromFile("MyImage")
+    canvasWithPixel.writeToFile("MyImage2")
     // сохранил в файл MyImage.ppm
-    println(canvasWithPixel.writeToPPM())
+    canvasWithPixel.writeToPPM()
 
 
 }

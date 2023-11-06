@@ -83,15 +83,10 @@ class Vector(x:Double, y:Double, z:Double) : Tuple(x, y, z, 0.0) {
 
     override operator fun div(scalar:Double):Vector = Vector(x / scalar, y / scalar, z / scalar)
 
-
-//    Свойство Magnitude эквивалентно абсолютному значению комплексного числа.
-//    Он задает расстояние от источника (пересечения оси X и оси Y в декартовой системе координат) до двумерной точки,
-//    представленной комплексным числом. Абсолютное значение вычисляется следующим образом:
-//    | a + bi | = Math.Sqrt(a * a + b * b)
     fun magnitude():Double = sqrt(x*x + y*y + z*z)
 
     fun normalize():Vector {
-        val mag = magnitude()
+        val mag = this.magnitude()
 
         return Vector(x / mag, y / mag, z / mag)
     }
