@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="19d009db-2e0f-4bd7-90ec-5d9bb3e86912" name="Changes" comment="Update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Tuple.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Tuple.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,30 +63,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Kotlin.RayKt">
-    <configuration name="RayTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;RayTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <ForceTestExec>true</ForceTestExec>
-      <method v="2" />
-    </configuration>
     <configuration name="Tests in 'ray-tracing.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -146,13 +123,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TupleKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TupleKt" />
+      <module name="ray-tracing.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Kotlin.RayKt" />
         <item itemvalue="Kotlin.CanvasKt" />
+        <item itemvalue="Kotlin.TupleKt" />
         <item itemvalue="Gradle.Tests in 'ray-tracing.test'" />
         <item itemvalue="Gradle.TupleTest" />
-        <item itemvalue="Gradle.RayTest" />
       </list>
     </recent_temporary>
   </component>
@@ -166,6 +150,8 @@
       <updated>1697990145367</updated>
       <workItem from="1697990146450" duration="4768000" />
       <workItem from="1699253632485" duration="21093000" />
+      <workItem from="1699346518724" duration="325000" />
+      <workItem from="1699347996061" duration="1033000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1697993562470</created>
@@ -174,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697993562470</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Update">
+      <created>1699346830592</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1699346830592</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,6 +175,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Init" />
-    <option name="LAST_COMMIT_MESSAGE" value="Init" />
+    <MESSAGE value="Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update" />
   </component>
 </project>
