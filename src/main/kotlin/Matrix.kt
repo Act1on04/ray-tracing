@@ -1,3 +1,5 @@
+import kotlin.math.abs
+
 class Matrix(private val size: Int) {
     private val data = Array(size) { DoubleArray(size) }
 
@@ -62,21 +64,43 @@ class Matrix(private val size: Int) {
         }
     }
 
+    override fun equals(other: Any?): Boolean {
+        if (other is Matrix) {
+            if (size != other.size) return false
+
+            for (i in 0 until size)
+                for (j in 0 until size)
+                    if (abs(this[i, j] - other[i, j]) > epsilon) return false
+            return true
+        }
+        else
+            return false
+    }
+
 }
 
 
-fun main(args:Array<String>) {
+fun main() {
 
-    val mtrx = Matrix(4)
-    println("1")
-    println(mtrx.toString())
+//    val mtrx = Matrix(4)
+//    println("1")
+//    println(mtrx.toString())
+//
+//    mtrx.setIdentity()
+//    println("2")
+//    println(mtrx.toString())
+//
+//    mtrx.fill(1 , 2 , 3 , 4 , 5.5 , 6.5 , 7.5 , 8.5 , 9 , 10 , 11 , 12 , 13.5 , 14.5 , 15.5 , 16.5 )
+//    println("3")
+//    println(mtrx.toString())
 
-    mtrx.setIdentity()
-    println("2")
-    println(mtrx.toString())
+    val matrix1 = Matrix(3).fill(1.001, 2, 3, 4, 5, 6, 7, 8, 9)
+    val matrix2 = Matrix(3).fill(1, 2, 3, 4, 5, 6, 7, 8, 9)
 
-    mtrx.fill(1 , 2 , 3 , 4 , 5.5 , 6.5 , 7.5 , 8.5 , 9 , 10 , 11 , 12 , 13.5 , 14.5 , 15.5 , 16.5 )
-    println("3")
-    println(mtrx.toString())
+    if (matrix1 == matrix2) {
+        println("Matrix equals")
+    } else {
+        println("Matrix not equals")
+    }
 
 }
