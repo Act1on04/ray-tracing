@@ -25,6 +25,8 @@ fun max(p1: Point, p2: Point): Point {
 
 open class Tuple(val x:Double, val y:Double, val z:Double, val w:Double) {
 
+    constructor(x:Int, y:Int, z:Int, w:Int) : this(x.toDouble(), y.toDouble(), z.toDouble(), w.toDouble())
+
     override fun toString(): String = "[Tuple x:$x, y:$y, z:$z, w:$w]"
 
     operator fun plus(other:Tuple):Tuple =
@@ -36,6 +38,8 @@ open class Tuple(val x:Double, val y:Double, val z:Double, val w:Double) {
     open operator fun unaryMinus():Tuple = Tuple(-x, -y, -z, -w)
 
     open operator fun times(scalar:Double):Tuple = Tuple(x * scalar, y * scalar, z * scalar, w * scalar)
+
+    open operator fun times(other:Tuple):Double = x * other.x + y * other.y + z * other.z + w * other.w
 
     open operator fun div(scalar:Double):Tuple = Tuple(x / scalar, y / scalar, z / scalar, w / scalar)
 
