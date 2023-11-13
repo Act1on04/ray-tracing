@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.Assertions
 import kotlin.math.abs
 
 class Matrix(private val size: Int) {
@@ -163,6 +162,10 @@ class Matrix(private val size: Int) {
             return false
     }
 
+    companion object {
+        fun identity(size: Int) = Matrix(size).setIdentity()
+    }
+
 }
 
 
@@ -180,28 +183,30 @@ fun main() {
 //    println("3")
 //    println(mtrx.toString())
 
-    val matrix1 = Matrix(3).fill(1.001, 2, 3, 4, 5, 6, 7, 8, 9)
-    val matrix2 = Matrix(3).fill(1, 2, 3, 4, 5, 6, 7, 8, 9)
+//    val matrix1 = Matrix(3).fill(1.001, 2, 3, 4, 5, 6, 7, 8, 9)
+//    val matrix2 = Matrix(3).fill(1, 2, 3, 4, 5, 6, 7, 8, 9)
+//
+//    if (matrix1 == matrix2) {
+//        println("Matrix equals")
+//    } else {
+//        println("Matrix not equals")
+//    }
+//
+//    val M = Matrix(4).fill(-5, 2, 6, -8, 1, -5, 1, 8, 7, 7, -6, -7, 1, -3, 7, 4)
+//    val B = M.inverse()
+//    val invB = Matrix(4).fill(0.21805, 0.45113, 0.24060, -0.04511, -0.80827, -1.45677, -0.44361, 0.52068,
+//        -0.07895, -0.22368, -0.05263, 0.19737, -0.52256, -0.81391, -0.30075, 0.30639)
+//
+//    println(M.determinant())
+//    println(M.cofactor(2, 3))
+//    println(-160.0/532.0)
+//    println(B[3, 2])
+//    println(M.cofactor(3, 2))
+//    println(105.0 / 532.0)
+//    println(B[2, 3])
+//    println(B)
+//    println(invB)
 
-    if (matrix1 == matrix2) {
-        println("Matrix equals")
-    } else {
-        println("Matrix not equals")
-    }
 
-    val M = Matrix(4).fill(-5, 2, 6, -8, 1, -5, 1, 8, 7, 7, -6, -7, 1, -3, 7, 4)
-    val B = M.inverse()
-    val invB = Matrix(4).fill(0.21805, 0.45113, 0.24060, -0.04511, -0.80827, -1.45677, -0.44361, 0.52068,
-        -0.07895, -0.22368, -0.05263, 0.19737, -0.52256, -0.81391, -0.30075, 0.30639)
-
-    println(M.determinant())
-    println(M.cofactor(2, 3))
-    println(-160.0/532.0)
-    println(B[3, 2])
-    println(M.cofactor(3, 2))
-    println(105.0 / 532.0)
-    println(B[2, 3])
-    println(B)
-    println(invB)
 
 }
