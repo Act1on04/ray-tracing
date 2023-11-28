@@ -49,13 +49,13 @@ fun main(args:Array<String>) {
     for (x in 0 until width) {
         for (y in 0 until height) {
             // Рассчитать координаты пикселя в мировой системе координат
-            val worldX = (width / 2) - (x + 0.5)
-            val worldY = (height / 2) - (y + 0.5)
+//            val worldX = (width / 2) - (x + 0.5)
+//            val worldY = (height / 2) - (y + 0.5)
 
             // Создать луч из точки наблюдателя в направлении пикселя
-            val pixel = Point(worldX, worldY, 0.0) // Точка пикселя
-            val origin = Point(0.0, 0.0, -100.0) // Точка наблюдателя
-            val ray = Ray(origin, pixel) // Луч
+//            val pixel = Point(worldX, worldY, 0.0) // Точка пикселя
+//            val origin = Point(0.0, 0.0, -100.0) // Точка наблюдателя
+//            val ray = Ray(origin, pixel) // Луч
 
             // Рассчитать цвет для пикселя
             // Здесь вы должны реализовать логику трассировки лучей, которая зависит от вашей сцены и объектов
@@ -83,7 +83,7 @@ fun main(args:Array<String>) {
             // Создать луч из точки наблюдателя в направлении пикселя
             val pixel = Point(worldX, worldY, 0.0) // Точка пикселя
             val origin = Point(0.0, 0.0, -100.0) // Точка наблюдателя
-            val ray = Ray(origin, pixel) // Луч
+//            val ray = Ray(origin, pixel) // Луч
 
             // Рассчитать цвет для пикселя
             // Здесь вы должны реализовать логику трассировки лучей, которая зависит от вашей сцены и объектов
