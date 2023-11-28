@@ -9,7 +9,7 @@ class IntersectionTest {
         val i1 = Intersection(3.5, sphere)
 
         assertEquals(3.5, i1.t, "The t value of the intersection should be 3.5")
-        assertEquals(sphere, i1.obj, "The shape of the intersection should be the sphere")
+        assertEquals(sphere, i1.shape, "The shape of the intersection should be the sphere")
     }
 
     @Test
