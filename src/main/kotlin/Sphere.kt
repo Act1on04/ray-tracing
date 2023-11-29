@@ -49,14 +49,14 @@ fun main(args:Array<String>) {
             val ray = Ray(origin, pixel) // Луч
             val intersections = sphere.intersect(ray)
 
-            if (intersections.count != 0) {
+//            if (intersections.count != 0) {
                 val r = abs(ray.direction.x)
                 val g = abs(ray.direction.y)
                 val b = 0.0
                 canvas.setPixel(x, y, Color(r, g, b))
-            } else {
-                canvas.setPixel(x, y, Color.fromInt(0x00cdff))
-            }
+//            } else {
+//                canvas.setPixel(x, y, Color.fromInt(0x00cdff))
+//            }
         }
     }
     // Сохранить холст в файл
