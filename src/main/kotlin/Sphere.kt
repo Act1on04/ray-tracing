@@ -29,7 +29,7 @@ class Sphere  : Shape() {
 }
 
 
-fun main(args:Array<String>) {
+fun main() {
 
     val width = 800
     val height = 600
@@ -47,7 +47,7 @@ fun main(args:Array<String>) {
             val pixel = Point(0.01 * worldX,0.01 * worldY, 0.0) // Точка пикселя
             val origin = Point(0.0, 0.0, -10.0) // Точка наблюдателя
             val ray = Ray(origin, pixel) // Луч
-            val intersections = sphere.intersect(ray)
+//            val intersections = sphere.intersect(ray)
 
 //            if (intersections.count != 0) {
                 val r = abs(ray.direction.x)

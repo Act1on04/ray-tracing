@@ -164,6 +164,29 @@ class Matrix(private val size: Int) {
 
     companion object {
         fun identity(size: Int) = Matrix(size).setIdentity()
+
+        fun translation(x: Number, y: Number, z: Number): Matrix =
+            Matrix(4).fill(
+                1.0, 0.0, 0.0, x.toDouble(),
+                0.0, 1.0, 0.0, y.toDouble(),
+                0.0, 0.0, 1.0, z.toDouble(),
+                0.0, 0.0, 0.0, 1.0
+            )
+
+        fun translation(xyz: Number) = translation(xyz, xyz, xyz)
+
+        fun scaling(x: Number, y: Number, z: Number): Matrix =
+            Matrix(4).fill(
+                x.toDouble(), 0.0, 0.0, 0.0,
+                0.0, y.toDouble(), 0.0, 0.0,
+                0.0, 0.0, z.toDouble(), 0.0,
+                0.0, 0.0, 0.0, 1.0
+            )
+
+        fun scaling(xyz: Number) = scaling(xyz, xyz, xyz)
+
+
+
     }
 
 }
