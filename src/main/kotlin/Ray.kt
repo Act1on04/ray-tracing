@@ -12,6 +12,14 @@ class Ray(val origin:Point, val direction:Vector) {
     fun pointAt(t:Int) = pointAt(t.toDouble())
 
     override fun toString(): String = "[Ray, origin:$origin, direction:$direction]"
+
+    fun transform(m:Matrix):Ray {
+        val newOrigin = m * origin
+        val newDir = m * direction
+
+        return Ray(Point(newOrigin.x, newOrigin.y, newOrigin.z), Vector(newDir.x, newDir.y, newDir.z))
+    }
+
 }
 
 fun main(args:Array<String>) {

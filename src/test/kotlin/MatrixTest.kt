@@ -513,3 +513,228 @@ class MatrixDeterminantTest {
     }
 
 }
+
+class MatrixTransformationTest {
+
+//    Scenario: Multiplying by a translation matrix
+//    Given transform is translation(5.0, -3.0, 2.0)
+//    And p is a Point(-3, 4, 5)
+//    Then transform * p = point(2, 1, 7)
+    @Test
+    fun `Multiplying by a translation matrix`() {
+        // Given
+        val transform = Matrix.translation(5.0, -3.0, 2.0)
+        val p = Point(-3, 4, 5)
+        // Then
+        assertEquals(Point(2, 1, 7), transform * p, "The result should be point(2, 1, 7)")
+    }
+
+//    Scenario: Multiplying by the inverse of a translation matrix
+//    Given transform is translation(5, -3, 2)
+//    And inv is inverse(transform)
+//    And p is a Point(-3, 4, 5)
+//    Then inv * p = point(-8, 7, 3.0)
+    @Test
+    fun `Multiplying by the inverse of a translation matrix`() {
+        // Given
+        val transform = Matrix.translation(5.0, -3.0, 2.0)
+        val inv = transform.inverse()
+        val p = Point(-3, 4, 5)
+        // Then
+        assertEquals(Point(-8, 7, 3), inv * p, "The result should be point(-8, 7, 3)")
+    }
+
+//    Scenario: Translation does not affect vectors
+//    Given transform is translation(5, -3, 2)
+//    And v is a Vector(-3, 4, 5)
+//    Then transform * v = v
+    @Test
+    fun `Translation does not affect vectors`() {
+        // Given
+        val transform = Matrix.translation(5.0, -3.0, 2.0)
+        val v = Vector(-3, 4, 5)
+        // Then
+        assertEquals(v, transform * v, "The result should be Vector(-3, 4, 5)")
+    }
+
+//    Scenario: A scaling matrix applied to a point
+//    Given transform is scaling(2, 3, 4)
+//    And p is a Point(-4, 6, 8)
+//    Then transform * p = point(-8, 18, 32)
+    @Test
+    fun `A scaling matrix applied to a point`() {
+        // Given
+        val transform = Matrix.scaling(2.0, 3.0, 4.0)
+        val p = Point(-4, 6, 8)
+        // Then
+        assertEquals(Point(-8, 18, 32), transform * p, "The result should be point(-8, 18, 32)")
+    }
+
+//    Scenario: A scaling matrix applied to a vector
+//    Given transform is scaling(2, 3, 4)
+//    And v is a Vector(-4, 6, 8)
+//    Then transform * v = vector(-8, 18, 32)
+    @Test
+    fun `A scaling matrix applied to a vector`() {
+        // Given
+        val transform = Matrix.scaling(2.0, 3.0, 4.0)
+        val v = Vector(-4, 6, 8)
+        // Then
+        assertEquals(Vector(-8, 18, 32), transform * v, "The result should be vector(-8, 18, 32)")
+    }
+
+//    Scenario: Multiplying by the inverse of a scaling matrix
+//    Given transform is scaling(2, 3, 4)
+//    And inv is inverse(transform)
+//    And v is a Vector(-4, 6, 8)
+//    Then inv * v = vector(-2, 2, 2)
+    @Test
+    fun `Multiplying by the inverse of a scaling matrix`() {
+        // Given
+        val transform = Matrix.scaling(2.0, 3.0, 4.0)
+        val inv = transform.inverse()
+        val v = Vector(-4, 6, 8)
+        // Then
+        assertEquals(Vector(-2, 2, 2), inv * v, "The result should be vector(-2, 2, 2)")
+    }
+
+//    Scenario: Reflection is scaling by a negative value
+//    Given transform is scaling(-1, 1, 1)
+//    And p is a Point(2, 3, 4)
+//    Then transform * p = point(-2, 3, 4)
+    @Test
+    fun `Reflection is scaling by a negative value`() {
+        // Given
+        val transform = Matrix.scaling(-1.0, 1.0, 1.0)
+        val p = Point(2, 3, 4)
+        // Then
+        assertEquals(Point(-2, 3, 4), transform * p, "The result should be point(-2, 3, 4)")
+    }
+
+//    Scenario: Rotating a point around the x axis
+//    Given p is a Point(0, 1, 0)
+//    And half_quarter is rotation_x(0.7853981)
+//    And full_quarter is rotation_x(1.5707963)
+//    Then half_quarter * p = point(0, 0.707106, 0.707106)
+//    And full_quarter * p = point(0, 0, 1)
+    @Test
+    fun `Rotating a point around the x axis`() {
+        // Given
+        val p = Point(0, 1, 0)
+        val half_quarter = Matrix.rotationX(0.7853981)
+        val full_quarter = Matrix.rotationX(1.5707963)
+        // When
+        val result1 = half_quarter * p
+        val result2 = full_quarter * p
+        // Then
+        assertEquals(Point(0.0, 0.707106, 0.707106), result1, "The result should be point(0, 0.707106, 0.707106)")
+        assertEquals(Point(0, 0, 1), result2, "The result should be point(0, 0, 1)")
+    }
+
+//    Scenario: The inverse of an x-rotation rotates in the opposite direction
+//    Given p is a Point(0, 1, 0)
+//    And half_quarter is rotation_x(0.7853981)
+//    And inv is inverse(half_quarter)
+//    Then inv * p = point(0, 0.707106, -0.707106)
+    @Test
+    fun `The inverse of an x-rotation rotates in the opposite direction`() {
+        // Given
+        val p = Point(0, 1, 0)
+        val half_quarter = Matrix.rotationX(0.7853981)
+        val inv = half_quarter.inverse()
+        // Then
+        assertEquals(Point(0.0, 0.707106, -0.707106), inv * p, "The result should be point(0, 0.707106, -0.707106)")
+    }
+
+//    Scenario: Rotating a point around the y axis
+//    Given p is a Point(0, 0, 1)
+//    And half_quarter is rotation_y(0.7853981)
+//    And full_quarter is rotation_y(1.5707963)
+//    Then half_quarter * p = point(0.707106, 0, 0.707106)
+//    And full_quarter * p = point(1, 0, 0)
+    @Test
+    fun `Rotating a point around the y axis`() {
+        // Given
+        val p = Point(0, 0, 1)
+        val half_quarter = Matrix.rotationY(0.7853981)
+        val full_quarter = Matrix.rotationY(1.5707963)
+        // When
+        val result1 = half_quarter * p
+        val result2 = full_quarter * p
+        // Then
+        assertEquals(Point(0.707106, 0.0, 0.707106), result1, "The result should be point(0.707106, 0, 0.707106)")
+        assertEquals(Point(1, 0, 0), result2, "The result should be point(1, 0, 0)")
+    }
+
+//    Scenario: Rotating a point around the z axis
+//    Given p is a Point(0, 1, 0)
+//    And half_quarter is rotation_z(0.7853981)
+//    And full_quarter is rotation_z(1.5707963)
+//    Then half_quarter * p = point(-0.707106, 0.707106, 0)
+//    And full_quarter * p = point(-1, 0, 0)
+    @Test
+    fun `Rotating a point around the z axis`() {
+        // Given
+        val p = Point(0, 1, 0)
+        val half_quarter = Matrix.rotationZ(0.7853981)
+        val full_quarter = Matrix.rotationZ(1.5707963)
+        // When
+        val result1 = half_quarter * p
+        val result2 = full_quarter * p
+        // Then
+        assertEquals(Point(-0.707106, 0.707106, 0.0), result1, "The result should be point(-0.707106, 0.707106, 0)")
+        assertEquals(Point(-1, 0, 0), result2, "The result should be point(-1, 0, 0)")
+    }
+
+//    Scenario: Individual transformations are applied in sequence
+//    Given p is a Point(1, 0, 1)
+//    And A is rotation_x(1.5707963)
+//    And B is scaling(5, 5, 5)
+//    And C is translation(10, 5, 7)
+//    # apply rotation first
+//    When p2 is A * p
+//    Then p2 = point(1, -1, 0)
+//    # then apply scaling
+//    When p3 is B * p2
+//    Then p3 = point(5, -5, 0)
+//    # then apply translation
+//    When p4 is C * p3
+//    Then p4 = point(15, 0, 7)
+    @Test
+    fun `Individual transformations are applied in sequence`() {
+        // Given
+        val p = Point(1, 0, 1)
+        val A = Matrix.rotationX(1.5707963)
+        val B = Matrix.scaling(5, 5, 5)
+        val C = Matrix.translation(10, 5, 7)
+        // When
+        val p2 = A * p
+        val p3 = B * p2
+        val p4 = C * p3
+        // Then
+        assertEquals(Point(1, -1, 0), p2, "The result should be point(1, -1, 0)")
+        assertEquals(Point(5, -5, 0), p3, "The result should be point(5, -5, 0)")
+        assertEquals(Point(15, 0, 7), p4, "The result should be point(15, 0, 7)")
+    }
+
+//    Scenario: Chained transformations must be applied in reverse order
+//    Given p is a Point(1, 0, 1)
+//    And A is rotation_x(1.5707963)
+//    And B is scaling(5, 5, 5)
+//    And C is translation(10, 5, 7)
+//    When transform is C * B * A
+//    Then transform * p = point(15, 0, 7)
+    @Test
+    fun `Chained transformations must be applied in reverse order`() {
+        // Given
+        val p = Point(1, 0, 1)
+        val A = Matrix.rotationX(1.5707963)
+        val B = Matrix.scaling(5, 5, 5)
+        val C = Matrix.translation(10, 5, 7)
+        // When
+        val transform = C * B * A
+        // Then
+        assertEquals(Point(15, 0, 7), transform * p, "The result should be point(15, 0, 7)")
+    }
+
+}

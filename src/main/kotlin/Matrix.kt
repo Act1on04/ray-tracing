@@ -1,4 +1,6 @@
 import kotlin.math.abs
+import kotlin.math.cos
+import kotlin.math.sin
 
 class Matrix(private val size: Int) {
     private val data = Array(size) { DoubleArray(size) }
@@ -165,27 +167,58 @@ class Matrix(private val size: Int) {
     companion object {
         fun identity(size: Int) = Matrix(size).setIdentity()
 
-        fun translation(x: Number, y: Number, z: Number): Matrix =
+        fun translation(dx: Number, dy: Number, dz: Number): Matrix =
             Matrix(4).fill(
-                1.0, 0.0, 0.0, x.toDouble(),
-                0.0, 1.0, 0.0, y.toDouble(),
-                0.0, 0.0, 1.0, z.toDouble(),
+                1.0, 0.0, 0.0, dx.toDouble(),
+                0.0, 1.0, 0.0, dy.toDouble(),
+                0.0, 0.0, 1.0, dz.toDouble(),
                 0.0, 0.0, 0.0, 1.0
             )
 
-        fun translation(xyz: Number) = translation(xyz, xyz, xyz)
+        fun translation(dxyz: Number) = translation(dxyz, dxyz, dxyz)
 
-        fun scaling(x: Number, y: Number, z: Number): Matrix =
+        fun scaling(sx: Number, sy: Number, sz: Number): Matrix =
             Matrix(4).fill(
-                x.toDouble(), 0.0, 0.0, 0.0,
-                0.0, y.toDouble(), 0.0, 0.0,
-                0.0, 0.0, z.toDouble(), 0.0,
+                sx.toDouble(), 0.0, 0.0, 0.0,
+                0.0, sy.toDouble(), 0.0, 0.0,
+                0.0, 0.0, sz.toDouble(), 0.0,
                 0.0, 0.0, 0.0, 1.0
             )
 
-        fun scaling(xyz: Number) = scaling(xyz, xyz, xyz)
+        fun scaling(sxyz: Number) = scaling(sxyz, sxyz, sxyz)
 
+        fun rotationX(angle: Number): Matrix {
+            val sinA = sin(angle.toDouble())
+            val cosA = cos(angle.toDouble())
+            return Matrix(4).fill(
+                1.0, 0.0, 0.0, 0.0,
+                0.0, cosA, -sinA, 0.0,
+                0.0, sinA, cosA, 0.0,
+                0.0, 0.0, 0.0, 1.0
+            )
+        }
 
+        fun rotationY(angle: Number): Matrix {
+            val sinA = sin(angle.toDouble())
+            val cosA = cos(angle.toDouble())
+            return Matrix(4).fill(
+                cosA, 0.0, sinA, 0.0,
+                0.0, 1.0, 0.0, 0.0,
+                -sinA, 0.0, cosA, 0.0,
+                0.0, 0.0, 0.0, 1.0
+            )
+        }
+
+        fun rotationZ(angle: Number): Matrix {
+            val sinA = sin(angle.toDouble())
+            val cosA = cos(angle.toDouble())
+            return Matrix(4).fill(
+                cosA, -sinA, 0.0, 0.0,
+                sinA, cosA, 0.0, 0.0,
+                0.0, 0.0, 1.0, 0.0,
+                0.0, 0.0, 0.0, 1.0
+            )
+        }
 
     }
 

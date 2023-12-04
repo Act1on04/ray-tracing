@@ -2,7 +2,7 @@ import kotlin.math.abs
 import kotlin.math.sqrt
 
 class Sphere  : Shape() {
-    override fun intersect(ray: Ray): Intersections {
+    override fun localIntersect(ray: Ray): Intersections {
         val sphereToRay = ray.origin - Point(0, 0, 0)
         val a = ray.direction.dot(ray.direction)
         val b = 2 * ray.direction.dot(sphereToRay)
@@ -28,9 +28,7 @@ class Sphere  : Shape() {
     }
 }
 
-
-fun main() {
-
+fun task05() {
     val width = 800
     val height = 600
     val canvas = Canvas(width, height)
@@ -50,10 +48,10 @@ fun main() {
 //            val intersections = sphere.intersect(ray)
 
 //            if (intersections.count != 0) {
-                val r = abs(ray.direction.x)
-                val g = abs(ray.direction.y)
-                val b = 0.0
-                canvas.setPixel(x, y, Color(r, g, b))
+            val r = abs(ray.direction.x)
+            val g = abs(ray.direction.y)
+            val b = 0.0
+            canvas.setPixel(x, y, Color(r, g, b))
 //            } else {
 //                canvas.setPixel(x, y, Color.fromInt(0x00cdff))
 //            }
@@ -141,7 +139,75 @@ fun main() {
     // Сохранить холст в файл
     canvas.writeToFile("sphere4")
 
+}
+
+fun task06() {
+    val width = 400
+    val height = 400
+    val canvas = Canvas(width, height)
+    val sphere = Sphere()
+
+    val WALL_Z = 10.0;
+    val WALL_SIZE = 7.0
+    val HALF_SIZE = WALL_SIZE / 2.0;
+    val PIXEL_SIZE = WALL_SIZE / width;
+
+//    TASK 1
+    for (x in 0 until width) {
+        val worldX = -HALF_SIZE + PIXEL_SIZE * x;
+        for (y in 0 until height) {
+            // Рассчитать координаты пикселя в мировой системе координат
+            val worldY = HALF_SIZE - PIXEL_SIZE * y;
+
+//            val worldX = (width / 2) - (x + 0.5)
+//            val worldY = (height / 2) - (y + 0.5)
 
 
+            // Создать луч из точки наблюдателя в направлении пикселя
+            val pixel = Point(worldX, worldY, WALL_Z) // Точка пикселя
+            val origin = Point(0.0, 0.0, -5.0) // Точка наблюдателя
+            val ray = Ray(origin, pixel) // Луч
+            val intersections = sphere.intersect(ray)
+
+            if (intersections.count != 0) {
+                canvas.setPixel(x, y, Color.fromInt(0xffa500))
+            } else {
+                canvas.setPixel(x, y, Color.fromInt(0x00cdff))
+            }
+        }
+    }
+    // Сохранить холст в файл
+    canvas.writeToFile("transform_1")
+
+//    TASK 2
+    for (x in 0 until width) {
+        val worldX = -HALF_SIZE + PIXEL_SIZE * x;
+        for (y in 0 until height) {
+            // Рассчитать координаты пикселя в мировой системе координат
+            val worldY = HALF_SIZE - PIXEL_SIZE * y;
+
+            // Создать луч из точки наблюдателя в направлении пикселя
+            val pixel = Point(worldX, worldY, WALL_Z) // Точка пикселя
+            val origin = Point(0.0, 0.0, -5.0) // Точка наблюдателя
+            val ray = Ray(origin, pixel) // Луч
+            val scale = Matrix.scaling(1.0, 0.5, 1.0) // Масштабирование на 0,5 в направлении y
+            val transformedRay = ray.transform(scale) // Применяем масштабирование к лучу
+            val intersections = sphere.intersect(transformedRay)
+
+            if (intersections.count != 0) {
+                canvas.setPixel(x, y, Color.fromInt(0xffa500))
+            } else {
+                canvas.setPixel(x, y, Color.fromInt(0x00cdff))
+            }
+        }
+    }
+    // Сохранить холст в файл
+    canvas.writeToFile("transform_2")
+
+}
+
+fun main() {
+
+    task06()
 
 }

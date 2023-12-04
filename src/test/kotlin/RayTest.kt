@@ -59,3 +59,38 @@ class RayTest {
     }
 
 }
+
+class RayTransformTest {
+
+//    Scenario: Translating a ray
+//    Given ray is a Ray(point(1, 2, 3), vector(0, 1, 0))
+//    And transform is translation(3, 4, 5)
+//    When ray2 is transform(ray, transform)
+//    Then ray2.origin = point(4, 6, 8)
+//    And ray2.direction = vector(0, 1, 0)
+    @Test
+    fun `translating a ray`() {
+        val ray = Ray(Point(1, 2, 3), Vector(0, 1, 0))
+        val transform = Matrix.translation(3, 4, 5)
+        val ray2 = ray.transform(transform)
+
+        assertEquals(Point(4, 6, 8), ray2.origin, "The result should be Point(4, 6, 8)")
+        assertEquals(Vector(0, 1, 0), ray2.direction, "The result should be Vector(0, 1, 0)")
+    }
+
+//    Scenario: Scaling a ray
+//    Given ray is a Ray(point(1, 2, 3), vector(0, 1, 0))
+//    And transform is scaling(2, 3, 4)
+//    When ray2 is transform(ray, transform)
+//    Then ray2.origin = point(2, 6, 12)
+//    And ray2.direction = vector(0, 3, 0)
+    @Test
+    fun `scaling a ray`() {
+        val ray = Ray(Point(1, 2, 3), Vector(0, 1, 0))
+        val transform = Matrix.scaling(2, 3, 4)
+        val ray2 = ray.transform(transform)
+
+        assertEquals(Point(2, 6, 12), ray2.origin, "The result should be Point(2, 6, 12)")
+        assertEquals(Vector(0, 3, 0), ray2.direction, "The result should be Vector(0, 3, 0)")
+    }
+}
