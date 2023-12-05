@@ -1,3 +1,4 @@
+import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.sqrt
 
@@ -142,6 +143,33 @@ fun task05() {
 }
 
 fun task06() {
+
+//    TASK 1
+
+    // Тут Матрица трансформации единичная при умножении на луч он не изменится
+    savePictureFromTask06("transform_1", Matrix.identity(4))
+
+//    TASK 2
+    // Масштабирование на 0,5 в направлении Y
+    savePictureFromTask06("transform_2", Matrix.scaling(1.0, 0.5, 1.0))
+
+//    TASK 3
+    // Масштабирование на 0,5 в направлении X
+    savePictureFromTask06("transform_3", Matrix.scaling(0.5, 1.0, 1.0))
+
+//    TASK 4
+    // Поворот навколо осі Z на π/4 та
+    // Масштабування на 0.5 в напрямку x
+    // как оказалось порядок трансформации играет роль
+    // Поэтому менять местами матрицы нельзя
+    savePictureFromTask06(
+        "transform_4",
+        Matrix.rotationZ(PI/4) * Matrix.scaling(0.5, 1.0, 1.0)
+    )
+
+}
+
+fun savePictureFromTask06(fileName: String, transform: Matrix) {
     val width = 400
     val height = 400
     val canvas = Canvas(width, height)
@@ -152,16 +180,14 @@ fun task06() {
     val HALF_SIZE = WALL_SIZE / 2.0;
     val PIXEL_SIZE = WALL_SIZE / width;
 
-//    TASK 1
+    // Transform Sphere
+    sphere.transform = transform
+
     for (x in 0 until width) {
         val worldX = -HALF_SIZE + PIXEL_SIZE * x;
         for (y in 0 until height) {
             // Рассчитать координаты пикселя в мировой системе координат
             val worldY = HALF_SIZE - PIXEL_SIZE * y;
-
-//            val worldX = (width / 2) - (x + 0.5)
-//            val worldY = (height / 2) - (y + 0.5)
-
 
             // Создать луч из точки наблюдателя в направлении пикселя
             val pixel = Point(worldX, worldY, WALL_Z) // Точка пикселя
@@ -177,32 +203,7 @@ fun task06() {
         }
     }
     // Сохранить холст в файл
-    canvas.writeToFile("transform_1")
-
-//    TASK 2
-    for (x in 0 until width) {
-        val worldX = -HALF_SIZE + PIXEL_SIZE * x;
-        for (y in 0 until height) {
-            // Рассчитать координаты пикселя в мировой системе координат
-            val worldY = HALF_SIZE - PIXEL_SIZE * y;
-
-            // Создать луч из точки наблюдателя в направлении пикселя
-            val pixel = Point(worldX, worldY, WALL_Z) // Точка пикселя
-            val origin = Point(0.0, 0.0, -5.0) // Точка наблюдателя
-            val ray = Ray(origin, pixel) // Луч
-            val scale = Matrix.scaling(1.0, 0.5, 1.0) // Масштабирование на 0,5 в направлении y
-            val transformedRay = ray.transform(scale) // Применяем масштабирование к лучу
-            val intersections = sphere.intersect(transformedRay)
-
-            if (intersections.count != 0) {
-                canvas.setPixel(x, y, Color.fromInt(0xffa500))
-            } else {
-                canvas.setPixel(x, y, Color.fromInt(0x00cdff))
-            }
-        }
-    }
-    // Сохранить холст в файл
-    canvas.writeToFile("transform_2")
+    canvas.writeToFile(fileName)
 
 }
 
