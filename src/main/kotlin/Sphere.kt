@@ -167,6 +167,48 @@ fun task06() {
         Matrix.rotationZ(PI/4) * Matrix.scaling(0.5, 1.0, 1.0)
     )
 
+//    TASK 5
+
+    val width = 400
+    val height = 400
+    val canvas = Canvas(width, height)
+    val sphere = Sphere()
+
+    val WALL_Z = 10.0;
+    val WALL_SIZE = 7.0
+    val HALF_SIZE = WALL_SIZE / 2.0;
+    val PIXEL_SIZE = WALL_SIZE / width;
+
+    // Transform Sphere
+    sphere.transform = Matrix.rotationZ(PI/4) * Matrix.scaling(0.5, 1.0, 1.0)
+
+    for (x in 0 until width) {
+        val worldX = -HALF_SIZE + PIXEL_SIZE * x;
+        for (y in 0 until height) {
+            // Рассчитать координаты пикселя в мировой системе координат
+            val worldY = HALF_SIZE - PIXEL_SIZE * y;
+
+            // Создать луч из точки наблюдателя в направлении пикселя
+            val pixel = Point(worldX, worldY, WALL_Z) // Точка пикселя
+            val origin = Point(0.0, 0.0, -5.0) // Точка наблюдателя
+            val ray = Ray(origin, pixel) // Луч
+            val intersections = sphere.intersect(ray)
+
+            if (intersections.count != 0) {
+                val vector = sphere.normalAt(ray.pointAt(intersections[0].t))
+                val r = abs(vector.x)
+                val g = abs(vector.y)
+                val b = abs(vector.z)
+                canvas.setPixel(x, y, Color(r, g, b))
+            } else {
+                canvas.setPixel(x, y, Color.fromInt(0x00cdff))
+            }
+        }
+    }
+    // Сохранить холст в файл
+    canvas.writeToFile("VilnaTema")
+
+
 }
 
 fun savePictureFromTask06(fileName: String, transform: Matrix) {
