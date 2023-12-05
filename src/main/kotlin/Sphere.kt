@@ -174,19 +174,19 @@ fun task06() {
     val canvas = Canvas(width, height)
     val sphere = Sphere()
 
-    val WALL_Z = 10.0;
+    val WALL_Z = 10.0
     val WALL_SIZE = 7.0
-    val HALF_SIZE = WALL_SIZE / 2.0;
-    val PIXEL_SIZE = WALL_SIZE / width;
+    val HALF_SIZE = WALL_SIZE / 2.0
+    val PIXEL_SIZE = WALL_SIZE / width
 
     // Transform Sphere
     sphere.transform = Matrix.rotationZ(PI/4) * Matrix.scaling(0.5, 1.0, 1.0)
 
     for (x in 0 until width) {
-        val worldX = -HALF_SIZE + PIXEL_SIZE * x;
+        val worldX = -HALF_SIZE + PIXEL_SIZE * x
         for (y in 0 until height) {
             // Рассчитать координаты пикселя в мировой системе координат
-            val worldY = HALF_SIZE - PIXEL_SIZE * y;
+            val worldY = HALF_SIZE - PIXEL_SIZE * y
 
             // Создать луч из точки наблюдателя в направлении пикселя
             val pixel = Point(worldX, worldY, WALL_Z) // Точка пикселя
@@ -217,19 +217,19 @@ fun savePictureFromTask06(fileName: String, transform: Matrix) {
     val canvas = Canvas(width, height)
     val sphere = Sphere()
 
-    val WALL_Z = 10.0;
+    val WALL_Z = 10.0
     val WALL_SIZE = 7.0
-    val HALF_SIZE = WALL_SIZE / 2.0;
-    val PIXEL_SIZE = WALL_SIZE / width;
+    val HALF_SIZE = WALL_SIZE / 2.0
+    val PIXEL_SIZE = WALL_SIZE / width
 
     // Transform Sphere
     sphere.transform = transform
 
     for (x in 0 until width) {
-        val worldX = -HALF_SIZE + PIXEL_SIZE * x;
+        val worldX = -HALF_SIZE + PIXEL_SIZE * x
         for (y in 0 until height) {
             // Рассчитать координаты пикселя в мировой системе координат
-            val worldY = HALF_SIZE - PIXEL_SIZE * y;
+            val worldY = HALF_SIZE - PIXEL_SIZE * y
 
             // Создать луч из точки наблюдателя в направлении пикселя
             val pixel = Point(worldX, worldY, WALL_Z) // Точка пикселя
