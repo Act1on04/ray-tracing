@@ -14,7 +14,7 @@ fun main() {
             val worldY = (height / 2) - (y + 0.5)
 
             // Создать луч из точки наблюдателя в направлении пикселя
-            val pixel = Point(0.01 * worldX,0.01 * worldY, 0.0) // Точка пикселя
+            val pixel = Point(0.01 * worldX, 0.01 * worldY, 0.0) // Точка пикселя
             val origin = Point(0.0, 0.0, -10.0) // Точка наблюдателя
             val ray = Ray(origin, pixel) // Луч
 //            val intersections = sphere.intersect(ray)
@@ -41,7 +41,7 @@ fun main() {
             val worldY = (height / 2) - (y + 0.5)
 
             // Создать луч из точки наблюдателя в направлении пикселя
-            val pixel = Point(0.01 * worldX,0.01 * worldY, 0.0) // Точка пикселя
+            val pixel = Point(0.01 * worldX, 0.01 * worldY, 0.0) // Точка пикселя
             val origin = Point(0.0, 0.0, -10.0) // Точка наблюдателя
             val ray = Ray(origin, pixel) // Луч
             val intersections = sphere.intersect(ray)
@@ -65,7 +65,7 @@ fun main() {
             val worldY = (height / 2) - (y + 0.5)
 
             // Создать луч из точки наблюдателя в направлении пикселя
-            val pixel = Point(0.01 * worldX,0.01 * worldY, 0.0) // Точка пикселя
+            val pixel = Point(0.01 * worldX, 0.01 * worldY, 0.0) // Точка пикселя
             val origin = Point(0.0, 0.0, -10.0) // Точка наблюдателя
             val ray = Ray(origin, pixel) // Луч
             val intersections = sphere.intersect(ray)
@@ -92,7 +92,7 @@ fun main() {
             val worldY = (height / 2) - (y + 0.5)
 
             // Создать луч из точки наблюдателя в направлении пикселя
-            val pixel = Point(0.01 * worldX,0.01 * worldY, 0.0) // Точка пикселя
+            val pixel = Point(0.01 * worldX, 0.01 * worldY, 0.0) // Точка пикселя
             val origin = Point(0.0, 0.0, -10.0) // Точка наблюдателя
             val ray = Ray(origin, pixel) // Луч
             val intersections = sphere.intersect(ray)

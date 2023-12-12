@@ -25,7 +25,7 @@ fun main() {
             // Здесь вы должны реализовать логику трассировки лучей, которая зависит от вашей сцены и объектов
             // den Richtungsvektor des zum Pixel erzeugten Strahls
             // используем вектор направления луча в качестве цвета
-            val color = Color(abs(ray.direction.x) , abs(ray.direction.y), abs(ray.direction.z))
+            val color = Color(abs(ray.direction.x), abs(ray.direction.y), abs(ray.direction.z))
 
             // Записать цвет на холст
             canvas.setPixel(x, y, color)

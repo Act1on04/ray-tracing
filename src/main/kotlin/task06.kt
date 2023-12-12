@@ -23,7 +23,7 @@ fun task06() {
     // Поэтому менять местами матрицы нельзя
     savePictureFromTask06(
         "transform_4",
-        Matrix.rotationZ(PI /4) * Matrix.scaling(0.5, 1.0, 1.0)
+        Matrix.rotationZ(PI / 4) * Matrix.scaling(0.5, 1.0, 1.0)
     )
 
 //    TASK 5
@@ -39,7 +39,7 @@ fun task06() {
     val PIXEL_SIZE = WALL_SIZE / width
 
     // Transform Sphere
-    sphere.transform = Matrix.rotationZ(PI /4) * Matrix.scaling(0.5, 1.0, 1.0)
+    sphere.transform = Matrix.rotationZ(PI / 4) * Matrix.scaling(0.5, 1.0, 1.0)
 
     for (x in 0 until width) {
         val worldX = -HALF_SIZE + PIXEL_SIZE * x
