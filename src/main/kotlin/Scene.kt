@@ -12,4 +12,22 @@ class Scene {
         return objects
     }
 
+    // Статический метод для создания тестовой сцены
+    companion object {
+        fun defaultScene(): Scene {
+            val scene = Scene()
+
+            // Добавляем нетрансформированную сферу
+            val sphere1 = Sphere()
+            scene.add(sphere1)
+
+            // Добавляем уменьшенную вдвое сферу в начале координат
+            val sphere2 = Sphere()
+            sphere2.transform = Matrix.scaling(0.5)
+            scene.add(sphere2)
+
+            return scene
+        }
+    }
+
 }
