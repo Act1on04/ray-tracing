@@ -1,5 +1,5 @@
-class Intersections(vararg intersections: Intersection) {
-    private var intersections = intersections.sortedBy { it.t }
+class Intersections(vararg intersect: Intersection) {
+    private val intersections = intersect.sortedBy { it.t }
 
     val count: Int
         get() = intersections.size
@@ -9,5 +9,11 @@ class Intersections(vararg intersections: Intersection) {
 
     operator fun get(index: Int): Intersection = intersections[index]
 
+    fun merge(other: Intersections): Intersections {
+        val mergedIntersections = mutableListOf<Intersection>()
+        mergedIntersections.addAll(intersections)
+        mergedIntersections.addAll(other.intersections)
+        return Intersections(*mergedIntersections.toTypedArray())
+    }
 
 }

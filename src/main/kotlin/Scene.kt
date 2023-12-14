@@ -32,15 +32,15 @@ class Scene {
 //        return Intersections(*sorted.toTypedArray())
 //    }
 //
-    fun traceRay(ray: Ray): Intersections {
-
-        // Перебираем все объекты на сцене и вычисляем их пересечения с лучом
-        val objectsIntersection = objects.map { it.intersect(ray) }
-        val allIntersections = objectsIntersection.flatMap { it.intersections.asList() }
-        val sorted = allIntersections.sortedBy { it.t }
-        return Intersections(*sorted.toTypedArray())
-
-    }
+//    fun traceRay(ray: Ray): Intersections {
+//
+//        // Перебираем все объекты на сцене и вычисляем их пересечения с лучом
+//        val objectsIntersection = objects.map { it.intersect(ray) }
+//        val allIntersections = objectsIntersection.flatMap { it.intersections.asList() }
+//        val sorted = allIntersections.sortedBy { it.t }
+//        return Intersections(*sorted.toTypedArray())
+//
+//    }
 
 
     // Статический метод для создания тестовой сцены
@@ -60,5 +60,14 @@ class Scene {
             return scene
         }
     }
+
+}
+
+fun main() {
+
+    val scene = Scene.defaultScene()
+    val ray = Ray(Point(1, 2, 3), Point(3, 4, 5))
+    val objectsIntersection = scene.getObjects().map { it.intersect(ray)}
+    println(objectsIntersection)
 
 }
