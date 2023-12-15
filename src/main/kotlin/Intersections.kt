@@ -4,16 +4,21 @@ class Intersections(vararg intersect: Intersection) {
     val count: Int
         get() = intersections.size
 
-    fun hit(): Intersection? = intersections.filter { it.t > 0.0 }.minByOrNull { it.t }
-//    fun hit(): Intersection? = intersections.firstOrNull { intersection -> intersection.t > 0 }
+//    fun hit(): Intersection? = intersections.filter { it.t > 0.0 }.minByOrNull { it.t }
+    fun hit(): Intersection? = intersections.firstOrNull { intersection -> intersection.t > 0 }
 
     operator fun get(index: Int): Intersection = intersections[index]
 
     fun merge(other: Intersections): Intersections {
         val mergedIntersections = mutableListOf<Intersection>()
-        mergedIntersections.addAll(intersections)
-        mergedIntersections.addAll(other.intersections)
+        mergedIntersections.addAll(intersections.toList())
+        mergedIntersections.addAll(other.intersections.toList())
         return Intersections(*mergedIntersections.toTypedArray())
     }
+
+    fun toList(): List<Intersection> {
+        return intersections.toList()
+    }
+
 
 }

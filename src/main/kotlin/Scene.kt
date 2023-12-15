@@ -12,35 +12,10 @@ class Scene {
         return objects
     }
 
-//    fun traceRay(ray: Ray): Intersections {
-//        val intersections = objects.map { it.intersect(ray) }
-//        return intersections
-//    }
-
-
-//    internal fun intersect(ray: Ray): Intersections =
-//        shapes.flatMap { it.intersect(ray) }.sortedBy { it.t }
-//
-//    fun intersect(ray: Ray): Intersections {
-//        val xss = objects.map { it.intersect(ray) }
-//        return Intersections.combine(xss)
-//    }
-//
-//    fun combine(intersections: List<Intersections>): Intersections {
-//        val all = intersections.flatMap { it.intersections.asList() }
-//        val sorted = all.sortedBy { it.t }
-//        return Intersections(*sorted.toTypedArray())
-//    }
-//
-//    fun traceRay(ray: Ray): Intersections {
-//
-//        // Перебираем все объекты на сцене и вычисляем их пересечения с лучом
-//        val objectsIntersection = objects.map { it.intersect(ray) }
-//        val allIntersections = objectsIntersection.flatMap { it.intersections.asList() }
-//        val sorted = allIntersections.sortedBy { it.t }
-//        return Intersections(*sorted.toTypedArray())
-//
-//    }
+    fun traceRay(ray: Ray): Intersections {
+        val objectsIntersection = this.getObjects().flatMap { it.intersect(ray).toList()}
+        return Intersections(*objectsIntersection.toTypedArray())
+    }
 
 
     // Статический метод для создания тестовой сцены
@@ -66,8 +41,27 @@ class Scene {
 fun main() {
 
     val scene = Scene.defaultScene()
-    val ray = Ray(Point(1, 2, 3), Point(3, 4, 5))
-    val objectsIntersection = scene.getObjects().map { it.intersect(ray)}
+    val ray = Ray(Point(0, 0, -5), Point(0, 0, 1))
+
+    // Вариант 1
+    var intersections = Intersections()
+    for (obj in scene.getObjects())
+        intersections = intersections.merge(obj.intersect(ray))
+    println("V1: - with FOR")
+    println(" - already sorted")
+    println(intersections.toList())
+
+    // Вариант 2
+    val objectsIntersection = scene.getObjects().flatMap { it.intersect(ray).toList()}
+    println("V2: - with flatMap")
+    println(" - its List and not sorted yet")
     println(objectsIntersection)
+    println(" - its Intersections() and sorted")
+    println(Intersections(*objectsIntersection.toTypedArray()).toList())
+
+    // Вариант 3 уже с функцией traceRay(), написанной по Варианту 2
+    println("V3: with func traceRay()")
+    println(" - already sorted")
+    println(Scene.defaultScene().traceRay(ray).toList())
 
 }
