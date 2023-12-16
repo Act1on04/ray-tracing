@@ -220,6 +220,24 @@ class Matrix(private val size: Int) {
             )
         }
 
+        fun viewTransform(position: Point, lookAt: Point, up: Vector): Matrix {
+            val vpn = (position - lookAt).normalize()
+            val right = up.normalize().cross(vpn)
+            val trueUp = vpn.cross(right)
+
+            val orientation = Matrix(4).fill(
+                right.x, right.y, right.z, 0.0,
+                trueUp.x, trueUp.y, trueUp.z, 0.0,
+                vpn.x, vpn.y, vpn.z, 0.0,
+                0.0, 0.0, 0.0, 1.0
+            )
+
+            val translation = Matrix.translation(-position.x, -position.y, -position.z)
+
+            return orientation * translation
+        }
+
+
     }
 
 }

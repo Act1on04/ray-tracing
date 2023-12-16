@@ -736,5 +736,97 @@ class MatrixTransformationTest {
         // Then
         assertEquals(Point(15, 0, 7), transform * p, "The result should be point(15, 0, 7)")
     }
+}
+
+class MatrixViewTransformTest {
+
+//    Scenario: The transformation matrix for the default orientation
+//    Given position is a Point(0, 0, 0)
+//    And lookAt is a Point(0, 0, -1)
+//    And up is a Vector(0, 1, 0)
+//    When transform is view_transform(from, to, up)
+//    Then transform = identity_matrix
+    @Test
+    fun `The transformation matrix for the default orientation`() {
+        // Given
+        val position =Point(0, 0, 0)
+        val lookAt = Point(0, 0, -1)
+        val up = Vector(0, 1, 0)
+        // When
+        val transform = Matrix.viewTransform(position, lookAt, up)
+        // Then
+        assertTrue(transform == Matrix.identity(4), "The transformation matrix for the default orientation should be identity matrix")
+    }
+
+//    Scenario: A view transformation matrix looking in positive z direction
+//    Given position is a Point(0, 0, 0)
+//    And lookAt is a Point(0, 0, 1)
+//    And up is a Vector(0, 1, 0)
+//    When transform is view_transform(from, to, up)
+//    Then transform = scaling(-1, 1, -1)
+    @Test
+    fun `A view transformation matrix looking in positive z direction`() {
+        // Given
+        val position =Point(0, 0, 0)
+        val lookAt = Point(0, 0, 1)
+        val up = Vector(0, 1, 0)
+        // When
+        val transform = Matrix.viewTransform(position, lookAt, up)
+        // Then
+        assertTrue(transform == Matrix.scaling(-1, 1, -1),
+            "A view transformation matrix looking in positive z direction\n" +
+                "$transform \n" +
+                "should be \n" +
+                "${Matrix.scaling(-1, 1, -1)}\n")
+    }
+
+//    Scenario: The view transformation moves the world
+//    Given position is a Point(0, 0, 8)
+//    And lookAt is a Point(0, 0, 0)
+//    And up is a Vector(0, 1, 0)
+//    When transform is view_transform(from, to, up)
+//    Then transform = translation(0, 0, -8)
+    @Test
+    fun `The view transformation moves the world`() {
+        // Given
+        val position =Point(0, 0, 8)
+        val lookAt = Point(0, 0, 0)
+        val up = Vector(0, 1, 0)
+        // When
+        val transform = Matrix.viewTransform(position, lookAt, up)
+        // Then
+        assertTrue(transform == Matrix.translation(0, 0, -8), "A view transformation matrix \n" +
+                "$transform \n" +
+                "should be \n" +
+                "${Matrix.translation(0, 0, -8)}\n")
+    }
+
+//    Scenario: An arbitrary view transformation
+//    Given position is a Point(1, 3, 2)
+//    And lookAt is a Point(4, -2, 8)
+//    And up is a Vector(1, 1, 0)
+//    When transform is view_transform(from, to, up)
+//    Then transform is the following matrix:
+//    | -0.50709 | 0.50709 | 0.67612 | -2.36643 |
+//    | 0.76772 | 0.60609 | 0.12122 | -2.82843 |
+//    | -0.35857 | 0.59761 | -0.71714 | 0.00000 |
+//    | 0.00000 | 0.00000 | 0.00000 | 1.00000 |
+    @Test
+    fun `An arbitrary view transformation`() {
+        // Given
+        val position =Point(1, 3, 2)
+        val lookAt = Point(4, -2, 8)
+        val up = Vector(0, 1, 0)
+        // When
+        val transform = Matrix.viewTransform(position, lookAt, up)
+        val expected = Matrix(4).fill(
+            -0.50709, 0.50709, 0.67612, -2.36643,
+            0.76772, 0.60609, 0.12122, -2.82843,
+            -0.35857, 0.59761, -0.71714, 0.00000,
+            0.00000, 0.00000, 0.00000, 1.00000
+        )
+        // Then
+        assertTrue(transform == expected, "A view transformation matrix \n$transform \nshould be \n$expected\n")
+    }
 
 }
