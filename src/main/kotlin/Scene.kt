@@ -34,6 +34,32 @@ class Scene {
 
             return scene
         }
+
+        fun testScene(): Scene {
+//            Сцена содержит следующие объекты:
+//            сфера с радиусом 1 в позиции (-0.5, 1.0, 0.5)
+//            сфера с радиусом 0,5 в позиции (1,5, 0,5, -0,5)
+//            сфера с радиусом 0,33 в позиции (-1,5, 0,33, -0,75
+            val scene = Scene()
+
+            // Сфера с радиусом 1 в позиции (-0.5, 1.0, 0.5)
+            val sphere1 = Sphere()
+            sphere1.transform = Matrix.translation(-0.5, 1.0, 0.5)
+            scene.add(sphere1)
+
+            // Сфера с радиусом 0.5 в позиции (1.5, 0.5, -0.5)
+            val sphere2 = Sphere()
+            sphere2.transform = Matrix.translation(1.5, 0.5, -0.5) * Matrix.scaling(0.5)
+            scene.add(sphere2)
+
+            // Сфера с радиусом 0.33 в позиции (-1.5, 0.33, -0.75)
+            val sphere3 = Sphere()
+            sphere3.transform = Matrix.translation(-1.5, 0.33, -0.75) * Matrix.scaling(0.33)
+            scene.add(sphere3)
+
+            return scene
+        }
+
     }
 
 }
