@@ -2,7 +2,7 @@ import max
 import kotlin.math.*
 import kotlin.random.Random
 
-const val epsilon = 0.005
+const val epsilon = 0.000001
 
 private fun closeEnough(value:Double, other:Double) =
     abs(value - other) < epsilon

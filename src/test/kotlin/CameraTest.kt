@@ -1,7 +1,5 @@
-import org.junit.jupiter.api.Test
-
 import org.junit.jupiter.api.Assertions.*
-import kotlin.math.tan
+import org.junit.jupiter.api.Test
 
 class CameraTest {
 
@@ -51,5 +49,60 @@ class CameraTest {
         val camera = Camera(125, 200, 90.0)
         // Then
         assertEquals(0.01, camera.pixelSize, 0.00001, "The pixel size should be 0.01")
+    }
+}
+
+class CameraGenerateRayTest {
+
+//    Scenario: Constructing a ray through the center of the canvas
+//    Given camera is a Camera(201, 101, 90)
+//    When ray = ray_for_pixel(camera, 100, 50)
+//    Then ray.origin = point(0, 0, 0)
+//    And ray.direction = vector(0, 0, -1)
+    @Test
+    fun `Constructing a ray through the center of the canvas`() {
+        // Given
+        val camera = Camera(201, 101, 90.0)
+
+        // When
+        val ray = camera.generateRay(100, 50)
+
+        // Then
+        assertEquals(Point(0, 0, 0), ray.origin, "Ray origin should be at Point(0, 0, 0)")
+        assertEquals(Vector(0, 0, -1), ray.direction, "Ray direction should be Vector(0, 0, -1)")
+    }
+
+//    Scenario: Constructing a ray through a corner of the canvas
+//    Given camera is a Camera(201, 101, 90)
+//    When ray = ray_for_pixel(camera, 0, 0)
+//    Then ray.origin = point(0, 0, 0)
+//    And ray.direction = vector(0.665186, 0.332593, -0.668512)
+    @Test
+    fun `Constructing a ray through a corner of the canvas`() {
+        // Given
+        val camera = Camera(201, 101, 90.0)
+        // When
+        val ray = camera.generateRay(0, 0)
+        // Then
+        assertEquals(Point(0, 0, 0), ray.origin, "Ray origin should be at point(0, 0, 0)")
+        assertEquals(Vector(0.665186, 0.332593, -0.668512), ray.direction, "Ray direction should be Vector(0.665186, 0.332593, -0.668512)")
+    }
+
+//    Scenario: Constructing a ray when the camera is transformed
+//    Given camera is a Camera(201, 101, 90)
+//    When camera.transform = rotation_y(0.785398) * translation(0, -2, 5)
+//    And ray = ray_for_pixel(camera, 100, 50)
+//    Then ray.origin = point(0, 2, -5)
+//    And ray.direction = vector(0.707106, 0, -0.707106)
+    @Test
+    fun `Constructing a ray when the camera is transformed`() {
+        // Given
+        val camera = Camera(201, 101, 90.0)
+        camera.transform = Matrix.rotationY(0.785398) * Matrix.translation(0, -2, 5)
+        // When
+        val ray = camera.generateRay(100, 50)
+        // Then
+        assertEquals(Point(0, 2, -5), ray.origin, "Ray origin should be at point(0, 2, -5)")
+        assertEquals(Vector(0.707106, 0.0, -0.707106), ray.direction, "Ray direction should be Vector(0.707106, 0.0, -0.707106)")
     }
 }
