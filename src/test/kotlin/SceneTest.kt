@@ -60,5 +60,38 @@ class SceneTest {
         assertEquals(6.0, xs[3].t, "The fourth intersection's t value should be 6.0")
     }
 
+}
+
+class SceneLightTest {
+
+    //    Scenario: Creating a Scene with Lights
+    //    Given scene is a Scene()
+    //    Then scene contains no objects
+    //    And scene contains no lights
+    @Test
+    fun `Creating a Scene with Lights`() {
+        // Given
+        val scene = Scene()
+        // Then
+        assertTrue(scene.getObjects().isEmpty(), "An empty scene must not have any objects")
+        assertTrue(scene.getLights().isEmpty(), "An empty scene must not have any lights")
+    }
+
+
+    //    Scenario: Adding lights to a scene
+    //    Given scene is a Scene()
+    //    And light is point_light(point(-10, 10, -10), color(1, 1, 1))
+    //    When light is added to scene
+    //    Then scene contains light
+    @Test
+    fun `Adding lights to a scene`() {
+        // Given
+        val scene = Scene()
+        val light = PointLightSource(Point(-10, 10, -10), Color(1, 1, 1))
+        // When
+        scene.addLight(light)
+        // Then
+        assertTrue(scene.getLights().isNotEmpty(), "Scene must have lights")
+    }
 
 }

@@ -75,6 +75,7 @@ class PointTest {
 
 
 }
+
 class VectorTest {
 
     @Test
@@ -84,6 +85,39 @@ class VectorTest {
 
         assertEquals(true, a == b, "a should equal b")
 
+    }
+
+//    Scenario: Reflecting a vector approaching at 45 degrees
+//    Given vector1 is a Vector(1, -1, 0)
+//    And vector2 is a Vector(0, 1, 0)
+//    When refl is reflect(v1, v2)
+//    Then refl = Vector(1, 1, 0)
+    @Test
+    fun `Reflecting a vector approaching at 45 degrees`() {
+        // Given
+        val vector1 = Vector(1, -1, 0)
+        val vector2 = Vector(0, 1, 0)
+        // When
+        val refl = vector1.reflect(vector2)
+        // Then
+        assertEquals(Vector(1, 1, 0), refl, "The refl should be Vector(1, 1, 0)")
+    }
+
+    //    Scenario: Reflecting a vector off a slanted surface
+    //    Given vector1 is a Vector(0, -1, 0)
+    //    And vector2 is a Vector(0.707011, 0.707011, 0)
+    //    When refl is reflect(v1, v2)
+    //    Then refl = Vector(1, 0, 0)
+    @Test
+    fun `Reflecting a vector off a slanted surface`() {
+
+        // Given
+        val vector1 = Vector(0, -1, 0)
+        val vector2 = Vector(0.707011, 0.707011, 0.0)
+        // When
+        val refl = vector1.reflect(vector2)
+        // Then
+        assertEquals(Vector(1, 0, 0), refl, "The refl should be Vector(1, 0, 0)")
     }
 
 }

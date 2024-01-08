@@ -22,8 +22,8 @@ class Sphere  : Shape() {
         )
     }
 
-    override fun normalAt(point: Point): Vector {
-        return (point - Point(0, 0, 0)).normalize()
+    override fun localNormalAt(point: Tuple): Vector {
+        return (point - Point(0, 0, 0)).asVector()
     }
 }
 

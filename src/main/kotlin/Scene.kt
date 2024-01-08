@@ -1,6 +1,7 @@
 class Scene {
 
     private val objects: MutableList<Shape> = mutableListOf()
+    private val lights: MutableList<LightSource> = mutableListOf()
 
     // Метод для добавления объекта на сцену
     // Add object to Scene
@@ -8,8 +9,18 @@ class Scene {
         objects.add(obj)
     }
 
+    // Метод для добавления источника света на сцену
+    // Add light to Scene
+    fun addLight(light: LightSource) {
+        lights.add(light)
+    }
+
     fun getObjects(): List<Shape> {
         return objects
+    }
+
+    fun getLights(): List<LightSource> {
+        return lights
     }
 
     fun traceRay(ray: Ray): Intersections {
@@ -56,6 +67,11 @@ class Scene {
             val sphere3 = Sphere()
             sphere3.transform = Matrix.translation(-1.5, 0.33, -0.75) * Matrix.scaling(0.33)
             scene.add(sphere3)
+
+            // Теперь добавляем точечный источник света
+            // в позиции (-10, 10, -10), который излучает свет с цветом (1, 1, 1)
+            scene.addLight(PointLightSource(Point(-10, 10, -10), Color(1, 1, 1)))
+
 
             return scene
         }

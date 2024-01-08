@@ -170,3 +170,42 @@ class SphereTransformTest {
     }
 
 }
+
+class SphereLightTest {
+//    Scenario: Computing the normal on a translated sphere
+//    Given sphere is a Sphere()
+//    And transform is translation(0, 1, 0)
+//    And set_transform(sphere, transform)
+//    When n is normalAt(sphere, point(0, 1.707106, -0.707106))
+//    Then n = vector(0, 0.707106, -0.707106)
+    @Test
+    fun `Computing the normal on a translated sphere`() {
+        // Given
+        val sphere = Sphere()
+        val transform = Matrix.translation(0, 1, 0)
+        sphere.transform = transform
+        // When
+        val n = sphere.normalAt(Point(0.0, 1.707106, -0.707106))
+        // Then
+        assertEquals(Vector(0.0, 0.707106, -0.707106), n, "The n should be Vector(0.0, 0.707106, -0.707106)")
+    }
+
+//    Scenario: Computing the normal on a transformed sphere
+//    Given sphere is a Sphere()
+//    And transform is scaling(1, 0.5, 1) * rotation_z(0.62831)
+//    And set_transform(sphere, transform)
+//    When n is normalAt(sphere, point(0, 0.70711, -0.70711))
+//    Then n = vector(0, 0.970142, -0.242536)
+    @Test
+    fun `Computing the normal on a transformed sphere`() {
+        // Given
+        val sphere = Sphere()
+        val transform = Matrix.scaling(1, 0.5, 1) * Matrix.rotationZ(0.62831)
+        sphere.transform = transform
+        // When
+        val n = sphere.normalAt(Point(0.0, 0.70711, -0.70711))
+        // Then
+        assertEquals(Vector(0.0, 0.970142, -0.242536), n, "The n should be Vector(0.0, 0.970142, -0.242536)")
+    }
+
+}

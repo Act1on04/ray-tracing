@@ -2,7 +2,7 @@ import max
 import kotlin.math.*
 import kotlin.random.Random
 
-const val epsilon = 0.000001
+const val epsilon = 0.0005
 
 private fun closeEnough(value:Double, other:Double) =
     abs(value - other) < epsilon
@@ -104,7 +104,10 @@ class Vector(x:Double, y:Double, z:Double) : Tuple(x, y, z, 0.0) {
     )
 
     fun reflect(other:Vector):Vector {
-        return this - other * 2.0 * dot(other)
+        // Отраженный вектор рассчитывается по следующему правилу, где падающий вектор обозначается - e, нормаль – n,
+        // а отраженный вектор – r
+        // r = e − 2*(e*n)*n
+        return this - other * 2.0 * (this * other)
     }
 
 }
