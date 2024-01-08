@@ -2,6 +2,15 @@ class Scene {
 
     private val objects: MutableList<Shape> = mutableListOf()
     private val lights: MutableList<LightSource> = mutableListOf()
+    private var backGround: Color = Color.fromInt(0x00cdff)
+
+    fun getBackGround(): Color {
+        return backGround
+    }
+
+    fun setBackGround(color: Color) {
+        backGround = color
+    }
 
     // Метод для добавления объекта на сцену
     // Add object to Scene
@@ -34,9 +43,17 @@ class Scene {
         fun defaultScene(): Scene {
             val scene = Scene()
 
+            // добавляем точечный источник света в сцену по умолчанию
+            scene.addLight(PointLightSource(Point(-10, 10, -10), Color(1, 1, 1)))
+
             // Добавляем нетрансформированную сферу
             val sphere1 = Sphere()
+            // определяем свойства материалов для этой сферы
+            sphere1.material.color = Color(0.8, 1.0, 0.6)
+            sphere1.material.diffuse = 0.7
+            sphere1.material.specular = 0.2
             scene.add(sphere1)
+
 
             // Добавляем уменьшенную вдвое сферу в начале координат
             val sphere2 = Sphere()
@@ -52,6 +69,8 @@ class Scene {
 //            сфера с радиусом 0,5 в позиции (1,5, 0,5, -0,5)
 //            сфера с радиусом 0,33 в позиции (-1,5, 0,33, -0,75
             val scene = Scene()
+            // добавляем точечный источник света в сцену по умолчанию
+            scene.addLight(PointLightSource(Point(-10, 10, -10), Color(1, 1, 1)))
 
             // Сфера с радиусом 1 в позиции (-0.5, 1.0, 0.5)
             val sphere1 = Sphere()
@@ -75,6 +94,20 @@ class Scene {
 
             return scene
         }
+
+        fun saveSceneCanvasFromCamera(fileName: String, scene: Scene, width: Int, height: Int, fov: Double, position: Point, lookAt: Point, up: Vector) {
+
+            val camera = Camera(width, height, fov, position, lookAt, up)
+
+            // RayTracer erstellen und rendern
+            val rayTracer = RayTracer(scene, camera)
+
+            // Canvas in Datei schreiben
+            val canvas = rayTracer.render()
+            canvas.writeToFile(fileName)
+
+        }
+
 
     }
 

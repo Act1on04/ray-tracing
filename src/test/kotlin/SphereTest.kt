@@ -209,3 +209,38 @@ class SphereLightTest {
     }
 
 }
+
+class SphereMaterialTest {
+    // Scenario: A sphere has a default material
+    // Given sphere is a Sphere()
+    // When material is sphere.material
+    // Then material = Material()
+    @Test
+    fun `A sphere has a default material`() {
+        // Given
+        val sphere = Sphere()
+        // When
+        val  material = sphere.material
+        // Then
+        assertEquals(Material(), material, "An default Sphere must have default Material")
+    }
+
+    // Scenario: A sphere may be assigned a material
+    // Given sphere is a Sphere()
+    // And material is a Material()
+    // And material.ambient is 1.0
+    // When sphere.material is material
+    // Then sphere.material = material
+    @Test
+    fun `A sphere may be assigned a material`() {
+        // Given
+        val sphere = Sphere()
+        val  material = Material()
+        material.ambient = 1.0
+        // When
+        sphere.material = material
+        // Then
+        assertEquals(material, sphere.material, "An Sphere.material should be equal material with ambient=1.0")
+    }
+
+}

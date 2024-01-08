@@ -95,3 +95,38 @@ class SceneLightTest {
     }
 
 }
+
+class SceneMaterialTest {
+
+//     Scenario: The default world
+//     Given light is point_light(point(-10, 10, -10), color(1, 1, 1))
+//     And s1 is a Sphere() with:
+//     | material.color | (0.8, 1.0, 0.6) |
+//     | material.diffuse | 0.7 |
+//     | material.specular | 0.2 |
+//     And s2 is a Sphere() with:
+//     | transform | scaling(0.5, 0.5, 0.5) |
+//     When scene is default_scene()
+//     Then scene.light = light
+//     And scene contains s1
+//     And scene contains s2
+    @Test
+    fun `The default world`() {
+        // Given
+        val light = PointLightSource(Point(-10, 10, -10), Color(1, 1, 1))
+        val s1 = Sphere()
+        s1.material.color = Color(0.8, 1.0, 0.6)
+        s1.material.diffuse = 0.7
+        s1.material.specular = 0.2
+        val s2 = Sphere()
+        s2.transform = Matrix.scaling(0.5)
+
+        // When
+        val scene = Scene.defaultScene()
+        // Then
+        assertEquals(light, scene.getLights().first(), "The light should be added to the scene")
+        assertEquals(s1.material, scene.getObjects()[0].material, "The material of s1 should be set correctly")
+        assertEquals(s2.transform, scene.getObjects()[1].transform, "The transform of s2 should be set correctly")
+    }
+
+}

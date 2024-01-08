@@ -1,6 +1,6 @@
 import kotlin.math.abs
 
-data class Intersection(val t:Double, val shape:Sphere) {
+data class Intersection(val t: Double, val shape: Sphere) {
 
 //    override fun equals(other: Any?): Boolean {
 //        if (other is Intersection) {

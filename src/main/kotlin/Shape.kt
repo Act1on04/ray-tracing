@@ -1,6 +1,7 @@
 abstract class Shape {
 
     var transform = Matrix.identity(4)
+    var material = Material()
 
     fun intersect(ray: Ray): Intersections =
         localIntersect(ray.transform(this.transform.inverse()))

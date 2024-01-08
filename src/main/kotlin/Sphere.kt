@@ -1,6 +1,14 @@
 import kotlin.math.sqrt
 
 class Sphere  : Shape() {
+
+    override fun equals(other:Any?):Boolean {
+        if (other is Sphere) {
+            return this.transform == other.transform && this.material == other.material
+        }
+        return false
+    }
+
     override fun localIntersect(ray: Ray): Intersections {
         val sphereToRay = ray.origin - Point(0, 0, 0)
         val a = ray.direction.dot(ray.direction)

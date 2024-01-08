@@ -116,11 +116,14 @@ data class Color(val red:Double, val green:Double, val blue:Double) {
 
     constructor(red:Int, green:Int, blue:Int) : this(red.toDouble(), green.toDouble(), blue.toDouble())
 
-    init {
-        require(red in 0.0..1.0) { "Red component must be between 0.0 and 1.0" }
-        require(green in 0.0..1.0) { "Green component must be between 0.0 and 1.0" }
-        require(blue in 0.0..1.0) { "Blue component must be between 0.0 and 1.0" }
-    }
+    // Когда писал 8-ю лабу про материалы и освещение, это вдуг стало не актуально
+    //  в тестах к Материалам и Освещённости было - Then result = color(1.9, 1.9, 1.9)
+    // комментирую. ХЗ, что получится
+//    init {
+//        require(red in 0.0..1.0) { "Red component must be between 0.0 and 1.0" }
+//        require(green in 0.0..1.0) { "Green component must be between 0.0 and 1.0" }
+//        require(blue in 0.0..1.0) { "Blue component must be between 0.0 and 1.0" }
+//    }
 
     operator fun plus(other:Color):Color =
         Color(red + other.red, green + other.green, blue + other.blue)
