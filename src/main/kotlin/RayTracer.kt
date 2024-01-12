@@ -4,9 +4,9 @@ class RayTracer(private val scene: Scene, private val camera: Camera) {
     fun render(): Canvas {
         val canvas = Canvas(camera.width, camera.height)
 
-        // вообще у нас типа может быть в Сцене много источников цвета,
+        // Вообще у нас типа может быть в Сцене много источников цвета,
         // но пока мы работаем только с одним.
-        // Но если даже него не будет, то присфаиваем свет как в Дефолтной сцене
+        // Но если даже него не будет, то присваиваем свет как в Дефолтной сцене
         val light = scene.getLights().firstOrNull() ?: PointLightSource(Point(-10, 10, -10), Color(1, 1, 1))
 
         for (y in 0 until camera.height) {
@@ -17,10 +17,16 @@ class RayTracer(private val scene: Scene, private val camera: Camera) {
 
                 val color = if (hit != null) {
                     // если есть пересечения, то вычисляем цвет, используя Модель освещения Фонга
-                    val position = ray.pointAt(hit.t)
-                    val eyev = -ray.direction
-                    val normalv = hit.shape.normalAt(position)
-                    hit.shape.material.phongLighting(light, position, eyev, normalv)
+                    // в 9-й лабе всё это засунули в метод shadeHit() класса Сцена.
+                    // Поэтому комментируем, то что делали в 8-й лабе
+                    // val position = ray.pointAt(hit.t)
+                    // val eyev = -ray.direction
+                    // val normalv = hit.shape.normalAt(position)
+                    // hit.shape.material.phongLighting(light, position, eyev, normalv)
+
+                    val hitInfo = hit.prepareHitInfo(ray)
+                    scene.shadeHit(hitInfo)
+
                 }
                 else
                     // если нет пересечения, то берём дефолтный цвет фона из Сцены

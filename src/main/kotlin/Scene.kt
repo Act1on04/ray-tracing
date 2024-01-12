@@ -37,6 +37,14 @@ class Scene {
         return Intersections(*objectsIntersection.toTypedArray())
     }
 
+    fun shadeHit(hitInfo: HitInfo): Color {
+        // Вообще у нас типа может быть в Сцене много источников цвета,
+        // но пока мы работаем только с одним.
+        // Но если даже его не будет, то присваиваем свет как в Дефолтной сцене
+        val light = this.getLights().firstOrNull() ?: PointLightSource(Point(-10, 10, -10), Color(1, 1, 1))
+
+        return hitInfo.shape.material.phongLighting(light, hitInfo.point, hitInfo.eyeV, hitInfo.normalV)
+    }
 
     // Статический метод для создания тестовой сцены
     companion object {

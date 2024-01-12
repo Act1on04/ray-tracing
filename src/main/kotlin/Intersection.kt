@@ -14,4 +14,12 @@ data class Intersection(val t: Double, val shape: Sphere) {
         return this.t.compareTo(other.t)
     }
 
+    fun prepareHitInfo(ray: Ray ): HitInfo {
+        val point = ray.pointAt(t)
+        val eyeV = -ray.direction
+        val normalV = shape.normalAt(point)
+        return HitInfo(shape, t, point, eyeV, normalV)
+
+    }
+
 }
