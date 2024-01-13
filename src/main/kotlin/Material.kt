@@ -18,7 +18,8 @@ class Material(var color: Color = Color.WHITE,
     fun phongLighting(light: LightSource,
                       position: Point,
                       eyeV: Vector,
-                      normalV: Vector): Color  {
+                      normalV: Vector,
+                      inShadow: Boolean = false): Color  {
         // combine the surface (Material) color with the light's color/intensity
         // смешиваем цвет материала с цветом/интенсивностью света
         val effectiveColor = color * light.intensity
@@ -29,6 +30,10 @@ class Material(var color: Color = Color.WHITE,
 
         // Компонент ambient описывает общую базовую яркость сцены
         val ambient = color * ambient
+
+        // Из 9-й лабы. Если точка в тени, то диффузную и зеркальную составляющую не учитываем.
+        // Сразу возвращаем только рассеянный цвет
+        if (inShadow) return ambient
 
         // light_dot_normal represents the cosine of the angle between the
         // light vector and the normal vector. A negative number means the

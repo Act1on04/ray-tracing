@@ -130,3 +130,58 @@ class SceneMaterialTest {
     }
 
 }
+
+class SceneShadowTest {
+    // Scenario: There is no shadow when nothing is collinear with point and light
+    // Given scene is the defaultScene()
+    // And point is a Point(0, 10, 0)
+    // Then isShadowed(scene, point) is false
+    @Test
+    fun `There is no shadow when nothing is collinear with point and light`() {
+        // Given
+        val scene = Scene.defaultScene()
+        val point = Point(0, 10, 0)
+        // Then
+        assertEquals(false, scene.isShadowed(point), "The scene.isShadowed(Point(0, 10, 0)) should be False")
+    }
+
+    // Scenario: The shadow when an object is between the point and the light
+    // Given scene is the defaultScene()
+    // And point is a Point(10, -10, 10)
+    // Then isShadowed(scene, point) is true
+    @Test
+    fun `The shadow when an object is between the point and the light`() {
+        // Given
+        val scene = Scene.defaultScene()
+        val point = Point(10, -10, 10)
+        // Then
+        assertEquals(true, scene.isShadowed(point), "The scene.isShadowed(Point(10, -10, 10)) should be True")
+    }
+
+    // Scenario: There is no shadow when an object is behind the light
+    // Given scene is the defaultScene()
+    // And point is a Point(-20, 20, -20)
+    // Then isShadowed(scene, point) is false
+    @Test
+    fun `There is no shadow when an object is behind the light`() {
+        // Given
+        val scene = Scene.defaultScene()
+        val point = Point(-20, 20, -20)
+        // Then
+        assertEquals(false, scene.isShadowed(point), "The scene.isShadowed(Point(-20, 20, -20)) should be False")
+    }
+
+    // Scenario: There is no shadow when an object is behind the point
+    // Given scene is the defaultScene()
+    // And point is a Point(-2, 2, -2)
+    // Then isShadowed(scene, point) is false
+    @Test
+    fun `There is no shadow when an object is behind the point`() {
+        // Given
+        val scene = Scene.defaultScene()
+        val point = Point(-2, 2, -2)
+        // Then
+        assertEquals(false, scene.isShadowed(point), "The scene.isShadowed(Point(-2, 2, -2)) should be False")
+    }
+
+}

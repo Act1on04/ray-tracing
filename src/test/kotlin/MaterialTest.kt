@@ -1,6 +1,5 @@
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
-
 class MaterialTest {
     //    Background:
     //    Given material is a Material()
@@ -98,4 +97,26 @@ class MaterialTest {
         assertEquals(Color(0.1, 0.1, 0.1), result, "The result should be Color(0.1, 0.1, 0.1)")
     }
 
+    // Scenario: Lighting with the surface in shadow
+    // Given eyev is a Vector(0, 0, -1)
+    // And normalv is a Vector(0, 0, -1)
+    // And light is point_light(point(0, 0, -10), color(1, 1, 1))
+    // And isShadow is true
+    // When result is phongLighting(material, light, position, eyev, normalv, isShadow)
+    // Then result = color(0.1, 0.1, 0.1)
+    @Test
+    fun `Lighting with the surface in shadow`() {
+        // Given
+        val eyeV = Vector(0, 0, -1)
+        val normalV = Vector(0, 0, -1)
+        val light = PointLightSource(Point(0, 0, -10), Color(1, 1, 1))
+        val isShadow = true
+        // When
+        val  result = material.phongLighting(light, position, eyeV, normalV, isShadow)
+        // Then
+        assertEquals(Color(0.1, 0.1, 0.1), result, "The result should be Color(0.1, 0.1, 0.1)")
+    }
+
+
 }
+
