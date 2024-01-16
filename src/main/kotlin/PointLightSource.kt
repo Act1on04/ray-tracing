@@ -1,21 +1,13 @@
-class PointLightSource(color: Color, intensity: Double, val position: Point): LightSource(color, intensity) {
+class PointLightSource( val position: Point, color: Color, intensity: Double): LightSource(color, intensity) {
     override fun isDirectional(): Boolean = false
 
-    override fun directionFromPoint(point: Point): Vector {
-        TODO("Not yet implemented")
-    }
+    override fun directionFromPoint(point: Point): Vector = (position - point).normalize()
 
-    override fun directionToPoint(point: Point): Vector {
-        TODO("Not yet implemented")
-    }
+    override fun directionToPoint(point: Point): Vector = (point - position).normalize()
 
-    override fun distanceFromPoint(point: Point): Double {
-        TODO("Not yet implemented")
-    }
+    override fun distanceFromPoint(point: Point): Double  = (position - point).magnitude()
 
-    override fun colorAtPoint(point: Point): Color {
-        TODO("Not yet implemented")
-    }
+    override fun colorAtPoint(point: Point): Color = color * intensity
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

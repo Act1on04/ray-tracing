@@ -15,7 +15,7 @@ fun main() {
 
     //    Scene settings
     val scene = Scene()
-    scene.addLight(PointLightSource(Point(-10, 10, -10), Color(1, 1, 1)))
+    scene.addLight(PointLightSource(Point(-10, 10, -10), Color(1, 1, 1), 1.0))
 //    scene.setBackGround(Color.BLACK)
 
     val sphere = Sphere()

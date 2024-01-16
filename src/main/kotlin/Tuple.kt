@@ -211,7 +211,7 @@ data class Color(val red:Double, val green:Double, val blue:Double) {
 
 }
 
-fun main(args:Array<String>) {
+fun main() {
 
     val color2 = Color(300.toDouble() / 800, 500.toDouble() / 600, 0.0)
     println(color2)
