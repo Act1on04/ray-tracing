@@ -41,7 +41,7 @@ class Scene {
         // Вообще у нас типа может быть в Сцене много источников цвета,
         // но пока мы работаем только с одним.
         // Но если даже его не будет, то присваиваем свет как в Дефолтной сцене
-        val light = this.getLights().firstOrNull() ?: PointLightSource(Point(-10, 10, -10), Color(1, 1, 1), 1.0)
+        val light = this.getLights().firstOrNull() ?: PointLightSource(Point(-10, 10, -10), Color(1, 1, 1))
         // Из 9-й лабы. Добавляем проверку находится ли точка пересечения в тени или нет.
         // Что бы избежать эффекта "теневые прыщи", когда из-за погрешности вычислений может оказаться,
         // что точка датчика тени находится на очень малую величину ниже поверхности объекта,
@@ -80,7 +80,7 @@ class Scene {
             val scene = Scene()
 
             // добавляем точечный источник света в сцену по умолчанию
-            scene.addLight(PointLightSource(Point(-10, 10, -10), Color(1, 1, 1), 1.0))
+            scene.addLight(PointLightSource(Point(-10, 10, -10), Color(1, 1, 1)))
 
             // Добавляем нетрансформированную сферу
             val sphere1 = Sphere()
@@ -106,7 +106,7 @@ class Scene {
 //            сфера с радиусом 0,33 в позиции (-1,5, 0,33, -0,75
             val scene = Scene()
             // добавляем точечный источник света в сцену по умолчанию
-            scene.addLight(PointLightSource(Point(-10, 10, -10), Color(1, 1, 1), 1.0))
+            scene.addLight(PointLightSource(Point(-10, 10, -10), Color(1, 1, 1)))
 
             // Сфера с радиусом 1 в позиции (-0.5, 1.0, 0.5)
             val sphere1 = Sphere()
@@ -125,7 +125,7 @@ class Scene {
 
             // Теперь добавляем точечный источник света
             // в позиции (-10, 10, -10), который излучает свет с цветом (1, 1, 1)
-            scene.addLight(PointLightSource(Point(-10, 10, -10), Color(1, 1, 1), 1.0))
+            scene.addLight(PointLightSource(Point(-10, 10, -10), Color(1, 1, 1)))
 
 
             return scene
