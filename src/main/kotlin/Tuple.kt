@@ -54,6 +54,14 @@ open class Tuple(val x:Double, val y:Double, val z:Double, val w:Double) {
 
     fun asVector() = Vector(x, y, z)
 
+    override fun hashCode(): Int {
+        var result = x.hashCode()
+        result = 31 * result + y.hashCode()
+        result = 31 * result + z.hashCode()
+        result = 31 * result + w.hashCode()
+        return result
+    }
+
 }
 
 class Point(x:Double, y:Double, z:Double) : Tuple(x, y, z, 1.0) {
