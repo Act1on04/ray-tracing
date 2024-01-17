@@ -18,21 +18,38 @@ fun main() {
     val lookAt = Point(0, 1, 0)
     val up = Vector(0, 1, 0)
     val fov = 60.0
-    val width = 800
+    var width = 800
     val height = 400
 
-    saveCanvasFromCamera("task09_1", scene, width, height, fov, position, lookAt, up)
+    // saveCanvasFromCamera("task09_1", scene, width, height, fov, position, lookAt, up)
+    //
+    // // settings for task09_2
+    // scene.getObjects()[0].material.color = Color.fromInt(0x00FF00)
+    // scene.getObjects()[1].material.color = Color.fromInt(0xFFFF00)
+    // scene.getObjects()[2].material.color = Color.fromInt(0xFF1493)
+    // saveCanvasFromCamera("task09_2", scene, width, height, fov, position, lookAt, up)
+    //
+    // // settings for task09_3
+    // scene.setBackGround(Color.BLACK)
+    // saveCanvasFromCamera("task09_3", scene, width, height, fov, position, lookAt, up)
 
-    // settings for task09_2
-    scene.getObjects()[0].material.color = Color.fromInt(0x00FF00)
-    scene.getObjects()[1].material.color = Color.fromInt(0xFFFF00)
-    scene.getObjects()[2].material.color = Color.fromInt(0xFF1493)
+    // settings for task09_4-6
+    // scene with DirectionalLightSource
+    // Возвращаем сферам белый цвет и Фону синий цвет
+    scene.getObjects()[0].material.color = Color.WHITE
+    scene.getObjects()[1].material.color = Color.WHITE
+    scene.getObjects()[2].material.color = Color.WHITE
+    scene.setBackGround(Color.fromInt(0x00cdff))
+    width = 400
 
-    saveCanvasFromCamera("task09_2", scene, width, height, fov, position, lookAt, up)
+    val intensities = listOf(0.5, 1.0, 10.0)
+    for ((index, intensity) in intensities.withIndex()) {
+        scene.clearLights()
+        scene.addLight(DirectionalLightSource(Vector(10, -10, 10), intensity = intensity))
+        saveCanvasFromCamera("task09_${index + 4}", scene, width, height, fov, position, lookAt, up)
+    }
 
-    // settings for task09_3
-    scene.setBackGround(Color.BLACK)
 
-    saveCanvasFromCamera("task09_3", scene, width, height, fov, position, lookAt, up)
+
 
 }

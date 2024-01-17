@@ -66,3 +66,48 @@ class PointLightSourceTest {
     }
 
 }
+
+class DirectionalLightSourceTest {
+    // Scenario: DirectionalLight with standard parameters
+    // Given light is a DirectionalLight(vector(0, -1, 0))
+    // And p is a Point(0, 1, 0)
+    // Then isDirectional(light) = true
+    // And distanceFromPoint(light, p) = infinity
+    // And directionToPoint(light, p) = Vector(0, -1, 0)
+    // And directionFromPoint(light, p) = Vector(0, 1, 0)
+    // And colorAtPoint(light, p) = Color(1, 1, 1)
+    @Test
+    fun `DirectionalLight with standard parameters`() {
+        // Given
+        val light = DirectionalLightSource(Vector(0, -1, 0))
+        val p = Point(0,1,0)
+        // Then
+        assertEquals(true, light.isDirectional(), "The light.isDirectional() should be False")
+        assertEquals(Double.POSITIVE_INFINITY, light.distanceFromPoint(p), "The light.distanceFromPoint(p) should be Double.POSITIVE_INFINITY")
+        assertEquals(Vector(0, -1, 0), light.directionToPoint(p), "The light.directionToPoint(p) should be Vector(0, -1, 0)")
+        assertEquals(Vector(0, 1, 0), light.directionFromPoint(p), "The light.directionFromPoint(p) should be Vector(0, 1, 0)")
+        assertEquals(Color(1, 1, 1), light.colorAtPoint(p), "The light.colorAtPoint(p) should be color=Color(1, 1, 1)")
+    }
+
+    // Scenario: DirectionalLight with custom parameters
+    // Given light is a DirectionalLight(vector(0, -1, 0), color(0.2, 0.1, 0.3), 3.0)
+    // And p is a Point(0, 1, 0)
+    // Then isDirectional(light) = true
+    // And distanceFromPoint(light, p) = infinity
+    // And directionToPoint(light, p) = Vector(0, -1, 0)
+    // And directionFromPoint(light, p) = Vector(0, 1, 0)
+    // And colorAtPoint(light, p) = Color(0.6, 0.3, 0.9)
+    @Test
+    fun `DirectionalLight with custom parameters`() {
+        // Given
+        val light = DirectionalLightSource(Vector(0, -1, 0), Color(0.2, 0.1, 0.3), 3.0)
+        val p = Point(0,1,0)
+        // Then
+        assertEquals(true, light.isDirectional(), "The light.isDirectional() should be False")
+        assertEquals(Double.POSITIVE_INFINITY, light.distanceFromPoint(p), "The light.distanceFromPoint(p) should be Double.POSITIVE_INFINITY")
+        assertEquals(Vector(0, -1, 0), light.directionToPoint(p), "The light.directionToPoint(p) should be Vector(0, -1, 0)")
+        assertEquals(Vector(0, 1, 0), light.directionFromPoint(p), "The light.directionFromPoint(p) should be Vector(0, 1, 0)")
+        assertEquals(Color(0.6, 0.3, 0.9), light.colorAtPoint(p), "The light.colorAtPoint(p) should be color=Color(0.6, 0.3, 0.9)")
+    }
+
+}

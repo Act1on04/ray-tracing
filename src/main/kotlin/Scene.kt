@@ -24,6 +24,8 @@ class Scene {
         lights.add(light)
     }
 
+    fun clearLights() = lights.clear()
+
     fun getObjects(): List<Shape> {
         return objects
     }
@@ -105,8 +107,6 @@ class Scene {
 //            сфера с радиусом 0,5 в позиции (1,5, 0,5, -0,5)
 //            сфера с радиусом 0,33 в позиции (-1,5, 0,33, -0,75
             val scene = Scene()
-            // добавляем точечный источник света в сцену по умолчанию
-            scene.addLight(PointLightSource(Point(-10, 10, -10), Color(1, 1, 1)))
 
             // Сфера с радиусом 1 в позиции (-0.5, 1.0, 0.5)
             val sphere1 = Sphere()
@@ -126,7 +126,6 @@ class Scene {
             // Теперь добавляем точечный источник света
             // в позиции (-10, 10, -10), который излучает свет с цветом (1, 1, 1)
             scene.addLight(PointLightSource(Point(-10, 10, -10), Color(1, 1, 1)))
-
 
             return scene
         }
