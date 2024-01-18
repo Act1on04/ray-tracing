@@ -33,7 +33,7 @@ fun main() {
     // scene.setBackGround(Color.BLACK)
     // saveCanvasFromCamera("task09_3", scene, width, height, fov, position, lookAt, up)
 
-    // settings for task09_4-6
+    // settings for task09_4-9
     // scene with DirectionalLightSource
     // Возвращаем сферам белый цвет и Фону синий цвет
     scene.getObjects()[0].material.color = Color.WHITE
@@ -44,12 +44,20 @@ fun main() {
 
     val intensities = listOf(0.5, 1.0, 10.0)
     for ((index, intensity) in intensities.withIndex()) {
+        // scene with DirectionalLightSource
+        // scene.clearLights()
+        // scene.addLight(DirectionalLightSource(Vector(10, -10, 10), intensity = intensity))
+        // saveCanvasFromCamera("task09_${index + 4}", scene, width, height, fov, position, lookAt, up)
+
+        // scene with SpotLightSource
         scene.clearLights()
-        scene.addLight(DirectionalLightSource(Vector(10, -10, 10), intensity = intensity))
-        saveCanvasFromCamera("task09_${index + 4}", scene, width, height, fov, position, lookAt, up)
+        scene.addLight(SpotLightSource(
+            Point(-10, 10, -10),
+            Vector(10, -10, 10),
+            30.0,
+            10.0,
+            intensity = intensity))
+        saveCanvasFromCamera("task09_${index + 7}", scene, width, height, fov, position, lookAt, up)
     }
-
-
-
 
 }

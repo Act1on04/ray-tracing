@@ -15,7 +15,8 @@ class PointLightSource(private val position: Point, color: Color = Color.WHITE, 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other is PointLightSource) {
-            return this.position == other.position && this.getColor() == other.getColor() && this.getIntensity() == other.getIntensity()
+            return this.position == other.position
+                    && this.getColor() == other.getColor() && this.getIntensity() == other.getIntensity()
         }
         return false
     }

@@ -14,7 +14,8 @@ class DirectionalLightSource(private val direction: Vector, color: Color = Color
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other is DirectionalLightSource) {
-            return this.direction == other.direction && this.getColor() == other.getColor() && this.getIntensity() == other.getIntensity()
+            return this.direction == other.direction
+                    && this.getColor() == other.getColor() && this.getIntensity() == other.getIntensity()
         }
         return false
     }

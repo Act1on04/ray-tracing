@@ -68,36 +68,36 @@ class Point(x:Double, y:Double, z:Double) : Tuple(x, y, z, 1.0) {
 
     constructor(x:Int, y:Int, z:Int) : this(x.toDouble(), y.toDouble(), z.toDouble())
 
-    operator fun minus(other:Point):Vector =
+    operator fun minus(other:Point): Vector =
         Vector(x - other.x, y - other.y, z - other.z)
 
-    operator fun plus(other:Vector):Point =
+    operator fun plus(other:Vector): Point =
         Point(x + other.x, y + other.y, z + other.z)
 
-    operator fun minus(other:Vector):Point =
+    operator fun minus(other:Vector): Point =
         Point(x - other.x, y - other.y, z - other.z)
 
 }
 
-class Vector(x:Double, y:Double, z:Double) : Tuple(x, y, z, 0.0) {
+class Vector(x:Double, y:Double, z:Double): Tuple(x, y, z, 0.0) {
 
-    constructor(x:Int, y:Int, z:Int) : this(x.toDouble(), y.toDouble(), z.toDouble())
+    constructor(x:Int, y:Int, z:Int): this(x.toDouble(), y.toDouble(), z.toDouble())
 
-    operator fun plus(other:Vector):Vector =
+    operator fun plus(other:Vector): Vector =
         Vector(x + other.x, y + other.y, z + other.z)
 
-    operator fun minus(other:Vector):Vector =
+    operator fun minus(other:Vector): Vector =
         Vector(x - other.x, y - other.y, z - other.z)
 
-    override operator fun unaryMinus():Vector = Vector(-x, -y, -z)
+    override operator fun unaryMinus(): Vector = Vector(-x, -y, -z)
 
-    override operator fun times(scalar:Double):Vector = Vector(x * scalar, y * scalar, z * scalar)
+    override operator fun times(scalar:Double): Vector = Vector(x * scalar, y * scalar, z * scalar)
 
-    override operator fun div(scalar:Double):Vector = Vector(x / scalar, y / scalar, z / scalar)
+    override operator fun div(scalar:Double): Vector = Vector(x / scalar, y / scalar, z / scalar)
 
     fun magnitude():Double = sqrt(x*x + y*y + z*z)
 
-    fun normalize():Vector {
+    fun normalize(): Vector {
         val mag = this.magnitude()
 
         return Vector(x / mag, y / mag, z / mag)
@@ -105,18 +105,21 @@ class Vector(x:Double, y:Double, z:Double) : Tuple(x, y, z, 0.0) {
 
     fun dot(other:Vector):Double = x * other.x + y * other.y + z * other.z
 
-    fun cross(other:Vector):Vector = Vector(
+    fun cross(other:Vector): Vector = Vector(
         y * other.z - z * other.y,
         z * other.x - x * other.z,
         x * other.y - y * other.x
     )
 
-    fun reflect(other:Vector):Vector {
+    fun reflect(other:Vector): Vector {
         // Отраженный вектор рассчитывается по следующему правилу, где падающий вектор обозначается - e, нормаль – n,
         // а отраженный вектор – r
         // r = e − 2*(e*n)*n
         return this - other * 2.0 * (this * other)
     }
+
+    fun angleBetween(other: Vector): Double =
+        Math.toDegrees(acos((this * other) / (this.magnitude() * other.magnitude())))
 
 }
 
