@@ -20,14 +20,6 @@ fun main() {
     var width = 400
     val height = 400
 
-    val intensities = listOf(0.1, 1.0, 10.0, 100.0)
-    for ((index, intensity) in intensities.withIndex()) {
-        scene.clearLights()
-        scene.addLight(PointLightSource(Point(-10, 10, -10), intensity = intensity))
-        saveSceneCanvasFromCamera("task09_${index + 10}", scene, width, height, fov, position, lookAt, up)
-    }
-
-
     // saveSceneCanvasFromCamera("task09_1", scene, width, height, fov, position, lookAt, up)
     //
     // // settings for task09_2
@@ -75,5 +67,12 @@ fun main() {
     //     scene.addLight(PointLightSource(Point(-10, 10, -10), intensity = intensity))
     //     saveSceneCanvasFromCamera("task09_${index + 10}", scene, width, height, fov, position, lookAt, up)
     // }
+
+    val intensities = listOf(0.1, 1.0, 10.0, 100.0)
+    for ((index, intensity) in intensities.withIndex()) {
+        scene.clearLights()
+        scene.addLight(PointLightSource(Point(-10, 10, -10), intensity = intensity))
+        saveSceneCanvasFromCamera("task09_${index + 14}", scene, width, height, fov, position, lookAt, up)
+    }
 
 }
