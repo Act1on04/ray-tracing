@@ -1,5 +1,4 @@
 import Scene.Companion.saveSceneCanvasFromCamera
-import kotlin.math.PI
 
 fun main() {
 
@@ -21,17 +20,17 @@ fun main() {
     var width = 800
     val height = 400
 
-    // saveCanvasFromCamera("task09_1", scene, width, height, fov, position, lookAt, up)
+    // saveSceneCanvasFromCamera("task09_1", scene, width, height, fov, position, lookAt, up)
     //
     // // settings for task09_2
     // scene.getObjects()[0].material.color = Color.fromInt(0x00FF00)
     // scene.getObjects()[1].material.color = Color.fromInt(0xFFFF00)
     // scene.getObjects()[2].material.color = Color.fromInt(0xFF1493)
-    // saveCanvasFromCamera("task09_2", scene, width, height, fov, position, lookAt, up)
+    // saveSceneCanvasFromCamera("task09_2", scene, width, height, fov, position, lookAt, up)
     //
     // // settings for task09_3
     // scene.setBackGround(Color.BLACK)
-    // saveCanvasFromCamera("task09_3", scene, width, height, fov, position, lookAt, up)
+    // saveSceneCanvasFromCamera("task09_3", scene, width, height, fov, position, lookAt, up)
 
     // settings for task09_4-9
     // scene with DirectionalLightSource
@@ -47,7 +46,7 @@ fun main() {
         // scene with DirectionalLightSource
         // scene.clearLights()
         // scene.addLight(DirectionalLightSource(Vector(10, -10, 10), intensity = intensity))
-        // saveCanvasFromCamera("task09_${index + 4}", scene, width, height, fov, position, lookAt, up)
+        // saveSceneCanvasFromCamera("task09_${index + 4}", scene, width, height, fov, position, lookAt, up)
 
         // scene with SpotLightSource
         scene.clearLights()
@@ -57,7 +56,7 @@ fun main() {
             30.0,
             10.0,
             intensity = intensity))
-        saveCanvasFromCamera("task09_${index + 7}", scene, width, height, fov, position, lookAt, up)
+        saveSceneCanvasFromCamera("task09_${index + 7}", scene, width, height, fov, position, lookAt, up)
     }
 
 }
