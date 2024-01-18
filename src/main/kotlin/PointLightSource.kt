@@ -10,7 +10,10 @@ class PointLightSource(private val position: Point, color: Color = Color.WHITE, 
 
     override fun distanceFromPoint(point: Point): Double  = (position - point).magnitude()
 
-    override fun colorAtPoint(point: Point): Color = getColor() * getIntensity()
+    override fun colorAtPoint(point: Point): Color =
+        //  почему-то картинки из Лабы получаются правильные, если не использовать коэффициент дистанции
+        // getColor() * getIntensity() * (1.0 / (distanceFromPoint(point) * distanceFromPoint(point)))
+        getColor() * getIntensity()
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

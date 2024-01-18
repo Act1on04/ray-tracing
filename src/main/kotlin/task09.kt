@@ -17,8 +17,16 @@ fun main() {
     val lookAt = Point(0, 1, 0)
     val up = Vector(0, 1, 0)
     val fov = 60.0
-    var width = 800
+    var width = 400
     val height = 400
+
+    val intensities = listOf(0.1, 1.0, 10.0, 100.0)
+    for ((index, intensity) in intensities.withIndex()) {
+        scene.clearLights()
+        scene.addLight(PointLightSource(Point(-10, 10, -10), intensity = intensity))
+        saveSceneCanvasFromCamera("task09_${index + 10}", scene, width, height, fov, position, lookAt, up)
+    }
+
 
     // saveSceneCanvasFromCamera("task09_1", scene, width, height, fov, position, lookAt, up)
     //
@@ -35,28 +43,37 @@ fun main() {
     // settings for task09_4-9
     // scene with DirectionalLightSource
     // Возвращаем сферам белый цвет и Фону синий цвет
-    scene.getObjects()[0].material.color = Color.WHITE
-    scene.getObjects()[1].material.color = Color.WHITE
-    scene.getObjects()[2].material.color = Color.WHITE
-    scene.setBackGround(Color.fromInt(0x00cdff))
-    width = 400
+    // scene.getObjects()[0].material.color = Color.WHITE
+    // scene.getObjects()[1].material.color = Color.WHITE
+    // scene.getObjects()[2].material.color = Color.WHITE
+    // scene.setBackGround(Color.fromInt(0x00cdff))
+    // width = 400
 
-    val intensities = listOf(0.5, 1.0, 10.0)
-    for ((index, intensity) in intensities.withIndex()) {
-        // scene with DirectionalLightSource
-        // scene.clearLights()
-        // scene.addLight(DirectionalLightSource(Vector(10, -10, 10), intensity = intensity))
-        // saveSceneCanvasFromCamera("task09_${index + 4}", scene, width, height, fov, position, lookAt, up)
+    // var intensities = listOf(0.5, 1.0, 10.0)
+    // for ((index, intensity) in intensities.withIndex()) {
+    //     // scene with DirectionalLightSource
+    //     scene.clearLights()
+    //     scene.addLight(DirectionalLightSource(Vector(10, -10, 10), intensity = intensity))
+    //     saveSceneCanvasFromCamera("task09_${index + 4}", scene, width, height, fov, position, lookAt, up)
+    //
+    //     // scene with SpotLightSource
+    //     scene.clearLights()
+    //     scene.addLight(SpotLightSource(
+    //         Point(-10, 10, -10),
+    //         Vector(10, -10, 10),
+    //         30.0,
+    //         10.0,
+    //         intensity = intensity))
+    //     saveSceneCanvasFromCamera("task09_${index + 7}", scene, width, height, fov, position, lookAt, up)
+    // }
 
-        // scene with SpotLightSource
-        scene.clearLights()
-        scene.addLight(SpotLightSource(
-            Point(-10, 10, -10),
-            Vector(10, -10, 10),
-            30.0,
-            10.0,
-            intensity = intensity))
-        saveSceneCanvasFromCamera("task09_${index + 7}", scene, width, height, fov, position, lookAt, up)
-    }
+    // settings for task09_10-13
+    // scene with PointLightSource и Затухание света (Attenuation = Licht-Abschwächung bei Punktlichtquellen)
+    // intensities = listOf(0.1, 1.0, 10.0, 100.0)
+    // for ((index, intensity) in intensities.withIndex()) {
+    //     scene.clearLights()
+    //     scene.addLight(PointLightSource(Point(-10, 10, -10), intensity = intensity))
+    //     saveSceneCanvasFromCamera("task09_${index + 10}", scene, width, height, fov, position, lookAt, up)
+    // }
 
 }
