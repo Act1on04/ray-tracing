@@ -65,7 +65,6 @@ class Scene {
         val adjusted = hitInfo.point + hitInfo.normalV * epsilon
         var finalColor = Color.BLACK
         for (light in lights) {
-            // val light = this.getLights().firstOrNull() ?: PointLightSource(Point(-10, 10, -10), Color(1, 1, 1))
             val inShadow = isShadowed(adjusted, light)
             finalColor += hitInfo.shape.material.phongLighting(light, hitInfo.point, hitInfo.eyeV, hitInfo.normalV, inShadow)
         }

@@ -71,23 +71,23 @@ fun main() {
     // settings for task09_14
     width = 800
     scene.clearLights()
-    // scene.addLight(DirectionalLightSource(Vector(0, -10, 10), intensity = 0.7))
-    // scene.addLight(SpotLightSource(
-    //             Point(-10, 10, -10),
-    //             Point(-1.5, 0.33, -0.75) - Point(-10, 10, -10),
-    //             Point(-5, 5, -5),
-    //             Point(-1.5, 0.33, -0.75) - Point(-5, 5, -5),
-    //             // Vector(10, -10, 10),
-    //             30.0,
-    //             10.0,
-    //             Color.BLUE))
+    scene.addLight(DirectionalLightSource(Vector(0, -10, 10), intensity = 0.7))
     scene.addLight(SpotLightSource(
-        Point(-10, 10, -10),
-        Point(1.5, 0.5, -0.5) - Point(-10, 10, -10),
+                Point(-10, 10, -10),
+                Point(-1.5, 0.33, -0.75) - Point(-10, 10, -10),
+                // Point(-5, 5, -5),
+                // Point(-1.5, 0.33, -0.75) - Point(-5, 5, -5),
+                // Vector(10, -10, 10),
+                10.0,
+                5.0,
+                Color.BLUE))
+    scene.addLight(SpotLightSource(
+        Point(10, 10, 10),
+        Point(1.5, 0.5, -0.5) - Point(10, 10, 10),
         // Vector(10, -10, 10),
-        15.0,
+        10.0,
         5.0,
-        Color.RED))
+        Color.ORANGE))
     saveSceneCanvasFromCamera("task09_14", scene, width, height, fov, position, lookAt, up)
 
 }

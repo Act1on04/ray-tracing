@@ -182,6 +182,7 @@ data class Color(val red:Double, val green:Double, val blue:Double) {
         val GREEN = Color(0.0, 1.0, 0.0)
         val BLUE = Color(0.0, 0.0, 1.0)
         val WHITE = Color(1.0, 1.0, 1.0)
+        val ORANGE = RED * 0.8 + GREEN * 0.2
 
         // Создаём Color со случайными значениями
         fun randomColor(): Color {
