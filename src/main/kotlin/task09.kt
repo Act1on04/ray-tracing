@@ -68,11 +68,26 @@ fun main() {
     //     saveSceneCanvasFromCamera("task09_${index + 10}", scene, width, height, fov, position, lookAt, up)
     // }
 
-    val intensities = listOf(0.1, 1.0, 10.0, 100.0)
-    for ((index, intensity) in intensities.withIndex()) {
-        scene.clearLights()
-        scene.addLight(PointLightSource(Point(-10, 10, -10), intensity = intensity))
-        saveSceneCanvasFromCamera("task09_${index + 14}", scene, width, height, fov, position, lookAt, up)
-    }
+    // settings for task09_14
+    width = 800
+    scene.clearLights()
+    // scene.addLight(DirectionalLightSource(Vector(0, -10, 10), intensity = 0.7))
+    // scene.addLight(SpotLightSource(
+    //             Point(-10, 10, -10),
+    //             Point(-1.5, 0.33, -0.75) - Point(-10, 10, -10),
+    //             Point(-5, 5, -5),
+    //             Point(-1.5, 0.33, -0.75) - Point(-5, 5, -5),
+    //             // Vector(10, -10, 10),
+    //             30.0,
+    //             10.0,
+    //             Color.BLUE))
+    scene.addLight(SpotLightSource(
+        Point(-10, 10, -10),
+        Point(1.5, 0.5, -0.5) - Point(-10, 10, -10),
+        // Vector(10, -10, 10),
+        15.0,
+        5.0,
+        Color.RED))
+    saveSceneCanvasFromCamera("task09_14", scene, width, height, fov, position, lookAt, up)
 
 }
