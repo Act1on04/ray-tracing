@@ -7,7 +7,7 @@ class RayTracer(private val scene: Scene, private val camera: Camera) {
         // Вообще у нас типа может быть в Сцене много источников цвета,
         // но пока мы работаем только с одним.
         // Но если даже него не будет, то присваиваем свет как в Дефолтной сцене
-        val light = scene.getLights().firstOrNull() ?: PointLightSource(Point(-10, 10, -10), Color(1, 1, 1))
+//        val light = scene.getLights().firstOrNull() ?: PointLightSource(Point(-10, 10, -10), Color(1, 1, 1), 1.0)
 
         for (y in 0 until camera.height) {
             for (x in 0 until camera.width) {

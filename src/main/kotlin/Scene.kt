@@ -24,6 +24,8 @@ class Scene {
         lights.add(light)
     }
 
+    fun clearLights() = lights.clear()
+
     fun getObjects(): List<Shape> {
         return objects
     }
@@ -37,33 +39,49 @@ class Scene {
         return Intersections(*objectsIntersection.toTypedArray())
     }
 
-    fun shadeHit(hitInfo: HitInfo): Color {
-        // Вообще у нас типа может быть в Сцене много источников цвета,
-        // но пока мы работаем только с одним.
-        // Но если даже его не будет, то присваиваем свет как в Дефолтной сцене
-        val light = this.getLights().firstOrNull() ?: PointLightSource(Point(-10, 10, -10), Color(1, 1, 1))
-        // Из 9-й лабы. Добавляем проверку находится ли точка пересечения в тени или нет.
-        // Что бы избежать эффекта "теневые прыщи", когда из-за погрешности вычислений может оказаться,
-        // что точка датчика тени находится на очень малую величину ниже поверхности объекта,
-        // и тогда, конечно, поверхность объекта является первой точкой пересечения с датчиком тени.
-        // Соответственно, на поверхности будет черная точка (Это видно на скринах, когда объекты изъедены чёрными точками).
-        // Чтобы избежать этого мы НЕ позволяем датчику тени начинаться точно в рассчитанной точке пересечения.
-        // Начальная точка датчика тени смещается "вверх" на очень небольшое расстояние вдоль нормали к поверхности.
-        // Теневой датчик стартует не в точке пересечения, а в точке пересечения + нормаль * погрешность
-        // Schnittpunkt + Normale * epsilon
-        val inShadow = isShadowed(hitInfo.point + hitInfo.normalV * epsilon)
+    // По требованию концовки Лаб 9 часть 2 эту функцию заменил
+    // fun shadeHit(hitInfo: HitInfo): Color {
+    //     // Вообще у нас типа может быть в Сцене много источников цвета,
+    //     // но пока мы работаем только с одним.
+    //     // Но если даже его не будет, то присваиваем свет как в Дефолтной сцене
+    //     val light = this.getLights().firstOrNull() ?: PointLightSource(Point(-10, 10, -10), Color(1, 1, 1))
+    //     // Из 9-й лабы. Добавляем проверку находится ли точка пересечения в тени или нет.
+    //     // Что бы избежать эффекта "теневые прыщи", когда из-за погрешности вычислений может оказаться,
+    //     // что точка датчика тени находится на очень малую величину ниже поверхности объекта,
+    //     // и тогда, конечно, поверхность объекта является первой точкой пересечения с датчиком тени.
+    //     // Соответственно, на поверхности будет черная точка (Это видно на скринах, когда объекты изъедены чёрными точками).
+    //     // Чтобы избежать этого мы НЕ позволяем датчику тени начинаться точно в рассчитанной точке пересечения.
+    //     // Начальная точка датчика тени смещается "вверх" на очень небольшое расстояние вдоль нормали к поверхности.
+    //     // Теневой датчик стартует не в точке пересечения, а в точке пересечения + нормаль * погрешность
+    //     // Schnittpunkt + Normale * epsilon
+    //     val inShadow = isShadowed(hitInfo.point + hitInfo.normalV * epsilon)
+    //
+    //     return hitInfo.shape.material.phongLighting(light, hitInfo.point, hitInfo.eyeV, hitInfo.normalV, inShadow)
+    // }
 
-        return hitInfo.shape.material.phongLighting(light, hitInfo.point, hitInfo.eyeV, hitInfo.normalV, inShadow)
+    // Новый вариант функции, который будет учитывать несколько источников света.
+    // Основные принципы сохранились (см. комментарии к предыдущей)
+    fun shadeHit(hitInfo: HitInfo): Color {
+        val adjusted = hitInfo.point + hitInfo.normalV * epsilon
+        var finalColor = Color.BLACK
+        for (light in lights) {
+            val inShadow = isShadowed(adjusted, light)
+            finalColor += hitInfo.shape.material.phongLighting(light, hitInfo.point, hitInfo.eyeV, hitInfo.normalV, inShadow)
+        }
+        return finalColor
     }
 
-    fun isShadowed(point: Point):Boolean {
+    // По требованию концовки Лаб 9 часть 2 эту функцию тоже меняем.
+    // Добавляем в параметры источник света, для которого вычисляем находится ли точка в тени
+    fun isShadowed(point: Point, light: LightSource):Boolean {
         // 1. определите расстояние между точкой и источником света,
         // вычтя точку из положения источника света и источника света и определив длину этого вектора.
-        val pointToLightVector = this.lights[0].position - point
-        val distance = pointToLightVector.magnitude()
+        // val distance = this.lights[0].distanceFromPoint(point)
+        val distance = light.distanceFromPoint(point)
         // 2. постройте луч, направленный из точки в сторону источника света. Это можно сделать довольно просто,
         // если нормализации вектора, рассчитанного в пункте 1.
-        val direction = pointToLightVector.normalize()
+        // val direction = this.lights[0].directionFromPoint(point)
+        val direction = light.directionFromPoint(point)
         // 3. вычислите точки пересечения сцены с этим лучом.
         val ray = Ray(point, direction)
         val intersections = traceRay(ray)
@@ -104,10 +122,8 @@ class Scene {
 //            Сцена содержит следующие объекты:
 //            сфера с радиусом 1 в позиции (-0.5, 1.0, 0.5)
 //            сфера с радиусом 0,5 в позиции (1,5, 0,5, -0,5)
-//            сфера с радиусом 0,33 в позиции (-1,5, 0,33, -0,75
+//            сфера с радиусом 0,33 в позиции (-1,5, 0,33, -0,75)
             val scene = Scene()
-            // добавляем точечный источник света в сцену по умолчанию
-            scene.addLight(PointLightSource(Point(-10, 10, -10), Color(1, 1, 1)))
 
             // Сфера с радиусом 1 в позиции (-0.5, 1.0, 0.5)
             val sphere1 = Sphere()
@@ -127,7 +143,6 @@ class Scene {
             // Теперь добавляем точечный источник света
             // в позиции (-10, 10, -10), который излучает свет с цветом (1, 1, 1)
             scene.addLight(PointLightSource(Point(-10, 10, -10), Color(1, 1, 1)))
-
 
             return scene
         }

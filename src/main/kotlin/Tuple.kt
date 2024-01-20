@@ -54,42 +54,50 @@ open class Tuple(val x:Double, val y:Double, val z:Double, val w:Double) {
 
     fun asVector() = Vector(x, y, z)
 
+    override fun hashCode(): Int {
+        var result = x.hashCode()
+        result = 31 * result + y.hashCode()
+        result = 31 * result + z.hashCode()
+        result = 31 * result + w.hashCode()
+        return result
+    }
+
 }
 
 class Point(x:Double, y:Double, z:Double) : Tuple(x, y, z, 1.0) {
 
     constructor(x:Int, y:Int, z:Int) : this(x.toDouble(), y.toDouble(), z.toDouble())
 
-    operator fun minus(other:Point):Vector =
+    operator fun minus(other:Point): Vector =
         Vector(x - other.x, y - other.y, z - other.z)
 
-    operator fun plus(other:Vector):Point =
+    operator fun plus(other:Vector): Point =
         Point(x + other.x, y + other.y, z + other.z)
 
-    operator fun minus(other:Vector):Point =
+    operator fun minus(other:Vector): Point =
         Point(x - other.x, y - other.y, z - other.z)
 
 }
 
-class Vector(x:Double, y:Double, z:Double) : Tuple(x, y, z, 0.0) {
+class Vector(x:Double, y:Double, z:Double): Tuple(x, y, z, 0.0) {
 
-    constructor(x:Int, y:Int, z:Int) : this(x.toDouble(), y.toDouble(), z.toDouble())
+    constructor(x:Int, y:Int, z:Int): this(x.toDouble(), y.toDouble(), z.toDouble())
 
-    operator fun plus(other:Vector):Vector =
+    operator fun plus(other:Vector): Vector =
         Vector(x + other.x, y + other.y, z + other.z)
 
-    operator fun minus(other:Vector):Vector =
+    operator fun minus(other:Vector): Vector =
         Vector(x - other.x, y - other.y, z - other.z)
 
-    override operator fun unaryMinus():Vector = Vector(-x, -y, -z)
+    override operator fun unaryMinus(): Vector = Vector(-x, -y, -z)
 
-    override operator fun times(scalar:Double):Vector = Vector(x * scalar, y * scalar, z * scalar)
+    override operator fun times(scalar:Double): Vector = Vector(x * scalar, y * scalar, z * scalar)
 
-    override operator fun div(scalar:Double):Vector = Vector(x / scalar, y / scalar, z / scalar)
+    override operator fun div(scalar:Double): Vector = Vector(x / scalar, y / scalar, z / scalar)
 
     fun magnitude():Double = sqrt(x*x + y*y + z*z)
 
-    fun normalize():Vector {
+    fun normalize(): Vector {
         val mag = this.magnitude()
 
         return Vector(x / mag, y / mag, z / mag)
@@ -97,18 +105,21 @@ class Vector(x:Double, y:Double, z:Double) : Tuple(x, y, z, 0.0) {
 
     fun dot(other:Vector):Double = x * other.x + y * other.y + z * other.z
 
-    fun cross(other:Vector):Vector = Vector(
+    fun cross(other:Vector): Vector = Vector(
         y * other.z - z * other.y,
         z * other.x - x * other.z,
         x * other.y - y * other.x
     )
 
-    fun reflect(other:Vector):Vector {
+    fun reflect(other:Vector): Vector {
         // Отраженный вектор рассчитывается по следующему правилу, где падающий вектор обозначается - e, нормаль – n,
         // а отраженный вектор – r
         // r = e − 2*(e*n)*n
         return this - other * 2.0 * (this * other)
     }
+
+    fun angleBetween(other: Vector): Double =
+        Math.toDegrees(acos((this * other) / (this.magnitude() * other.magnitude())))
 
 }
 
@@ -171,6 +182,7 @@ data class Color(val red:Double, val green:Double, val blue:Double) {
         val GREEN = Color(0.0, 1.0, 0.0)
         val BLUE = Color(0.0, 0.0, 1.0)
         val WHITE = Color(1.0, 1.0, 1.0)
+        val ORANGE = RED * 0.8 + GREEN * 0.2
 
         // Создаём Color со случайными значениями
         fun randomColor(): Color {
@@ -203,7 +215,7 @@ data class Color(val red:Double, val green:Double, val blue:Double) {
 
 }
 
-fun main(args:Array<String>) {
+fun main() {
 
     val color2 = Color(300.toDouble() / 800, 500.toDouble() / 600, 0.0)
     println(color2)
