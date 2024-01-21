@@ -4,19 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19d009db-2e0f-4bd7-90ec-5d9bb3e86912" name="Changes" comment="Update">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/task09.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task09_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task09_1_Schatten-Akne.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task09_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task09_2_Schatten-Akne.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task09_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task09_3_Schatten-Akne.png" afterDir="false" />
+    <list default="true" id="19d009db-2e0f-4bd7-90ec-5d9bb3e86912" name="Changes" comment="Lab9_2 Update task09 delete comments">
+      <change afterPath="$PROJECT_DIR$/src.rar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/HitInfo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/HitInfo.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Intersection.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Intersection.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Material.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Material.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/RayTracer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/RayTracer.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Scene.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Scene.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/task09.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/task09.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/MaterialTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/MaterialTest.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/SceneTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/SceneTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task09_10.png" beforeDir="false" afterPath="$PROJECT_DIR$/task09_10.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task09_11.png" beforeDir="false" afterPath="$PROJECT_DIR$/task09_11.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task09_12.png" beforeDir="false" afterPath="$PROJECT_DIR$/task09_12.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task09_13.png" beforeDir="false" afterPath="$PROJECT_DIR$/task09_13.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +51,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Lab9_2" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -78,25 +85,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Kotlin&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -108,8 +115,8 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Kotlin.Task09Kt">
-    <configuration name="MaterialTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.MaterialTest.Reflectivity for the default material">
+    <configuration name="MaterialTest.Reflectivity for the default material" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -122,7 +129,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;MaterialTest&quot;" />
+            <option value="&quot;MaterialTest.Reflectivity for the default material&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -133,29 +140,28 @@
       <ForceTestExec>true</ForceTestExec>
       <method v="2" />
     </configuration>
-    <configuration name="SceneShadowTest.There is no shadow when nothing is collinear with point and light" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;SceneShadowTest.There is no shadow when nothing is collinear with point and light&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <ForceTestExec>true</ForceTestExec>
-      <method v="2" />
+    <configuration name="LightSourceTest and 1 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ray-tracing.test" />
+      <option name="TEST_OBJECT" value="pattern" />
+      <patterns>
+        <pattern testClass="LightSourceTest" />
+        <pattern testClass="PointLightSourceTest" />
+      </patterns>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LightSourceTest and 2 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ray-tracing.test" />
+      <option name="TEST_OBJECT" value="pattern" />
+      <patterns>
+        <pattern testClass="LightSourceTest" />
+        <pattern testClass="PointLightSourceTest" />
+        <pattern testClass="DirectionalLightSourceTest" />
+      </patterns>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="SceneTest and 3 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ray-tracing.test" />
@@ -170,13 +176,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Task08Kt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Task08Kt" />
-      <module name="ray-tracing.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Task09Kt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Task09Kt" />
       <module name="ray-tracing.main" />
@@ -186,11 +185,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.MaterialTest.Reflectivity for the default material" />
         <item itemvalue="Kotlin.Task09Kt" />
-        <item itemvalue="Gradle.MaterialTest" />
         <item itemvalue="JUnit.SceneTest and 3 more" />
-        <item itemvalue="Gradle.SceneShadowTest.There is no shadow when nothing is collinear with point and light" />
-        <item itemvalue="Kotlin.Task08Kt" />
+        <item itemvalue="JUnit.LightSourceTest and 2 more" />
+        <item itemvalue="JUnit.LightSourceTest and 1 more" />
       </list>
     </recent_temporary>
   </component>
@@ -239,7 +238,13 @@
       <workItem from="1705092122005" duration="167000" />
       <workItem from="1705092313580" duration="200000" />
       <workItem from="1705093140714" duration="6277000" />
-      <workItem from="1705159977922" duration="3916000" />
+      <workItem from="1705159977922" duration="7089000" />
+      <workItem from="1705434440043" duration="7868000" />
+      <workItem from="1705519570828" duration="7786000" />
+      <workItem from="1705605328697" duration="9030000" />
+      <workItem from="1705687542309" duration="6437000" />
+      <workItem from="1705830707286" duration="841000" />
+      <workItem from="1705838022100" duration="10622000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1697993562470</created>
@@ -374,7 +379,56 @@
       <option name="project" value="LOCAL" />
       <updated>1705092496510</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Update">
+      <created>1705172918475</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1705172918475</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Lab9_2 Create LightSource and PointLightSource">
+      <created>1705437861878</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1705437861878</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Lab9_2 Add private and get() for position, color and intensity in LightSource and PointLightSource.">
+      <created>1705442391360</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1705442391360</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Lab9_2 Add DirectionalLightSource.">
+      <created>1705528972001</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1705528972001</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Lab9_2 Update colorAtPoint() in PointLightSource">
+      <created>1705615401509</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1705615401509</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Lab9_2 Update last task from Lab9 (task09_14.png)">
+      <created>1705693648415</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1705693648415</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Lab9_2 Update task09 delete comments">
+      <created>1705693882207</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1705693882207</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -400,7 +454,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/Lab9_2" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -411,6 +477,12 @@
     <MESSAGE value="Init" />
     <MESSAGE value="Add class Camera" />
     <MESSAGE value="Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update" />
+    <MESSAGE value="Lab9_2 Create LightSource and PointLightSource" />
+    <MESSAGE value="Lab9_2 Add private and get() for position, color and intensity in LightSource and PointLightSource." />
+    <MESSAGE value="Lab9_2 Add DirectionalLightSource." />
+    <MESSAGE value="Lab9_2 Update colorAtPoint() in PointLightSource" />
+    <MESSAGE value="Lab9_2 Update last task from Lab9 (task09_14.png)" />
+    <MESSAGE value="Lab9_2 Update task09 delete comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lab9_2 Update task09 delete comments" />
   </component>
 </project>

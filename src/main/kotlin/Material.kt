@@ -4,7 +4,8 @@ class Material(var color: Color = Color.WHITE,
                var ambient: Double = 0.1,
                var diffuse: Double = 0.9,
                var specular: Double = 0.9,
-               var shininess: Int = 200) {
+               var shininess: Int = 200,
+               var reflectance: Double = 0.0) {
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

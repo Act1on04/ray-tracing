@@ -67,6 +67,7 @@ class Scene {
         for (light in lights) {
             val inShadow = isShadowed(adjusted, light)
             finalColor += hitInfo.shape.material.phongLighting(light, hitInfo.point, hitInfo.eyeV, hitInfo.normalV, inShadow)
+            finalColor += reflectedColor(hitInfo)
         }
         return finalColor
     }
@@ -90,6 +91,20 @@ class Scene {
         // чем источник света (t меньше расстояния, рассчитанного в пункте 1 вычисленное в пункте 1),
         // значит, точка находится в тени.
         return hit != null && hit.t < distance
+    }
+
+    fun colorAt(ray: Ray): Color {
+        val intersections = traceRay(ray);
+        val hit = intersections.hit() ?: return getBackGround()// Color.BLACK;
+        val hitInfo = hit.prepareHitInfo(ray);
+        val color = shadeHit(hitInfo);
+        return color;
+    }
+
+    fun reflectedColor(hitInfo: HitInfo): Color {
+        if (hitInfo.shape.material.reflectance == 0.0) return Color.BLACK
+        val reflectRay = Ray(hitInfo.point + hitInfo.normalV * epsilon, hitInfo.reflectV)
+        return colorAt(reflectRay) * hitInfo.shape.material.reflectance
     }
 
 

@@ -17,7 +17,7 @@ fun main() {
     val lookAt = Point(0, 1, 0)
     val up = Vector(0, 1, 0)
     val fov = 60.0
-    var width = 400
+    var width = 800
     val height = 400
 
     saveSceneCanvasFromCamera("task09_1", scene, width, height, fov, position, lookAt, up)

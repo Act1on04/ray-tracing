@@ -18,7 +18,8 @@ data class Intersection(val t: Double, val shape: Sphere) {
         val point = ray.pointAt(t)
         val eyeV = -ray.direction
         val normalV = shape.normalAt(point)
-        return HitInfo(shape, t, point, eyeV, normalV)
+        val reflectV = ray.direction.reflect(normalV)
+        return HitInfo(shape, t, point, eyeV, normalV, reflectV)
 
     }
 

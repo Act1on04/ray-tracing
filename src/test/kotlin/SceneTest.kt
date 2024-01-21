@@ -142,7 +142,7 @@ class SceneShadowTest {
         val scene = Scene.defaultScene()
         val point = Point(0, 10, 0)
         // Then
-        assertEquals(false, scene.isShadowed(point), "The scene.isShadowed(Point(0, 10, 0)) should be False")
+        assertEquals(false, scene.isShadowed(point, PointLightSource(Point(-10, 10, -10))), "The scene.isShadowed(Point(0, 10, 0)) should be False")
     }
 
     // Scenario: The shadow when an object is between the point and the light
@@ -155,7 +155,7 @@ class SceneShadowTest {
         val scene = Scene.defaultScene()
         val point = Point(10, -10, 10)
         // Then
-        assertEquals(true, scene.isShadowed(point), "The scene.isShadowed(Point(10, -10, 10)) should be True")
+        assertEquals(true, scene.isShadowed(point, PointLightSource(Point(-10, 10, -10))), "The scene.isShadowed(Point(10, -10, 10)) should be True")
     }
 
     // Scenario: There is no shadow when an object is behind the light
@@ -168,7 +168,7 @@ class SceneShadowTest {
         val scene = Scene.defaultScene()
         val point = Point(-20, 20, -20)
         // Then
-        assertEquals(false, scene.isShadowed(point), "The scene.isShadowed(Point(-20, 20, -20)) should be False")
+        assertEquals(false, scene.isShadowed(point, PointLightSource(Point(-10, 10, -10))), "The scene.isShadowed(Point(-20, 20, -20)) should be False")
     }
 
     // Scenario: There is no shadow when an object is behind the point
@@ -181,7 +181,7 @@ class SceneShadowTest {
         val scene = Scene.defaultScene()
         val point = Point(-2, 2, -2)
         // Then
-        assertEquals(false, scene.isShadowed(point), "The scene.isShadowed(Point(-2, 2, -2)) should be False")
+        assertEquals(false, scene.isShadowed(point, PointLightSource(Point(-10, 10, -10))), "The scene.isShadowed(Point(-2, 2, -2)) should be False")
     }
 
 }
