@@ -117,6 +117,15 @@ class MaterialTest {
         assertEquals(Color(0.1, 0.1, 0.1), result, "The result should be Color(0.1, 0.1, 0.1)")
     }
 
+    // Scenario: Reflectivity for the default material
+    // Given material is a Material()
+    // Then material.reflectance = 0.0
+    @Test
+    fun `Reflectivity for the default material`() {
+        // Then
+        assertEquals(0.0, material.reflectance, "The material.reflectance should be 0.0")
+    }
+
 
 }
 

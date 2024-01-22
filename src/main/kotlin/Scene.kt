@@ -1,8 +1,11 @@
+const val MAX_RECURSION = 5
+
 class Scene {
 
     private val objects: MutableList<Shape> = mutableListOf()
     private val lights: MutableList<LightSource> = mutableListOf()
     private var backGround: Color = Color.fromInt(0x00cdff)
+    private var depth: Int = MAX_RECURSION
 
     fun getBackGround(): Color {
         return backGround
@@ -11,6 +14,12 @@ class Scene {
     fun setBackGround(color: Color) {
         backGround = color
     }
+
+    fun setDepth(d: Int) {
+        depth = d
+    }
+
+    fun getDepth(): Int = depth
 
     // Метод для добавления объекта на сцену
     // Add object to Scene
@@ -61,12 +70,13 @@ class Scene {
 
     // Новый вариант функции, который будет учитывать несколько источников света.
     // Основные принципы сохранились (см. комментарии к предыдущей)
-    fun shadeHit(hitInfo: HitInfo): Color {
+    fun shadeHit(hitInfo: HitInfo, depth: Int): Color {
         val adjusted = hitInfo.point + hitInfo.normalV * epsilon
         var finalColor = Color.BLACK
         for (light in lights) {
             val inShadow = isShadowed(adjusted, light)
             finalColor += hitInfo.shape.material.phongLighting(light, hitInfo.point, hitInfo.eyeV, hitInfo.normalV, inShadow)
+            finalColor += reflectedColor(hitInfo, depth)
         }
         return finalColor
     }
@@ -90,6 +100,20 @@ class Scene {
         // чем источник света (t меньше расстояния, рассчитанного в пункте 1 вычисленное в пункте 1),
         // значит, точка находится в тени.
         return hit != null && hit.t < distance
+    }
+
+    fun colorAt(ray: Ray, depth: Int = getDepth()): Color {
+        val intersections = traceRay(ray);
+        val hit = intersections.hit() ?: return getBackGround()// Color.BLACK;
+        val hitInfo = hit.prepareHitInfo(ray);
+        val color = shadeHit(hitInfo, depth);
+        return color;
+    }
+
+    private fun reflectedColor(hitInfo: HitInfo, depth: Int): Color {
+        if (hitInfo.shape.material.reflectance == 0.0 || depth <= 0) return Color.BLACK
+        val reflectRay = Ray(hitInfo.point + hitInfo.normalV * epsilon, hitInfo.reflectV)
+        return colorAt(reflectRay, depth - 1) * hitInfo.shape.material.reflectance
     }
 
 
@@ -159,7 +183,6 @@ class Scene {
             canvas.writeToFile(fileName)
 
         }
-
 
     }
 
