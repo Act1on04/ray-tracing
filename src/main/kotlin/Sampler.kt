@@ -11,6 +11,17 @@ abstract class  Sampler() {
     }
 
     abstract fun generateSamples(): List<Pair<Double, Double>>
+
+    // тут получаем правильное количество точек в сетке для разных семплеров
+    fun getCountPoint(): Int {
+        if (this is OffsetSampler) {
+            return count * count
+        }
+        if (this is RandomSampler) {
+            return count
+        }
+        return 1
+    }
 }
 
 class NoSampler : Sampler(1) {
@@ -33,14 +44,11 @@ class OffsetSampler(cnt: Int = 3) : Sampler(cnt) {
                 samples.add(Pair(offsetX, offsetY))
             }
         }
-        // тут меняем счётчик чтобы потом в вычислениях получить правильное количество точек в сетке
-        count *= count
         return samples
     }
 }
 
 class RandomSampler(cnt: Int = SAMPLING_COUNT) : Sampler(cnt) {
-
     override fun generateSamples(): List<Pair<Double, Double>> {
         return List(count) { Pair(Random.nextDouble(-0.5, 0.5), Random.nextDouble(-0.5, 0.5)) }
     }

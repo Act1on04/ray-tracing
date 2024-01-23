@@ -39,22 +39,21 @@ class RayTracer(private val scene: Scene, private val camera: Camera) {
         return canvas
     }
 
-    fun render(sampler: Sampler = NoSampler()): Canvas {
+    fun render(sampler: Sampler): Canvas {
         val canvas = Canvas(camera.width, camera.height)
         val offsets = sampler.generateSamples()
+        val countPoint = sampler.getCountPoint()
 
         for (y in 0 until camera.height) {
             for (x in 0 until camera.width) {
                 var superSamplingColor = Color(0.0, 0.0, 0.0)
-                // val offsets = sampler.generateSamples()
-
                 for (offset in offsets) {
                     val ray = camera.generateRay(x + offset.first, y + offset.second)
                     val color = scene.colorAt(ray)
                     superSamplingColor += color
                 }
 
-                val pixelColor = superSamplingColor / sampler.count.toDouble()
+                val pixelColor = superSamplingColor / countPoint
                 canvas.setPixel(x, y, pixelColor)
             }
         }

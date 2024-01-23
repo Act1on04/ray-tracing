@@ -105,11 +105,11 @@ class Scene {
     }
 
     fun colorAt(ray: Ray, depth: Int = getDepth()): Color {
-        val intersections = traceRay(ray);
+        val intersections = traceRay(ray)
         val hit = intersections.hit() ?: return getBackGround()// Color.BLACK;
-        val hitInfo = hit.prepareHitInfo(ray);
-        val color = shadeHit(hitInfo, depth);
-        return color;
+        val hitInfo = hit.prepareHitInfo(ray)
+        val color = shadeHit(hitInfo, depth)
+        return color
     }
 
     private fun reflectedColor(hitInfo: HitInfo, depth: Int): Color {
