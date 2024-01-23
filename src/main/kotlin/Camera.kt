@@ -25,7 +25,7 @@ class Camera(val width: Int, val height: Int, val fov: Double) {
 
     val pixelSize = (halfWidth * 2.0) / width
 
-    fun generateRay(pixelX: Int, pixelY: Int): Ray {
+    fun generateRay(pixelX: Double, pixelY: Double): Ray {
 //        Этот метод работает следующим образом:
 //        1. Определяет смещение от края полотна до центра пикселя.
 //        2. Вычисляет координаты пикселя в мировом пространстве.

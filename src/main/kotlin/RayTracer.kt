@@ -1,4 +1,3 @@
-
 class RayTracer(private val scene: Scene, private val camera: Camera) {
 
     fun render(): Canvas {
@@ -11,7 +10,7 @@ class RayTracer(private val scene: Scene, private val camera: Camera) {
 
         for (y in 0 until camera.height) {
             for (x in 0 until camera.width) {
-                val ray = camera.generateRay(x, y)
+                val ray = camera.generateRay(x.toDouble(), y.toDouble())
                 // Убираем это всё по требованию Лабы 10 и заменяем на вызов Scene.colorAt(ray)
                 // val intersections = scene.traceRay(ray)
                 // val hit = intersections.hit()
@@ -39,4 +38,29 @@ class RayTracer(private val scene: Scene, private val camera: Camera) {
 
         return canvas
     }
+
+    fun render(sampler: Sampler = NoSampler()): Canvas {
+        val canvas = Canvas(camera.width, camera.height)
+        val offsets = sampler.generateSamples()
+
+        for (y in 0 until camera.height) {
+            for (x in 0 until camera.width) {
+                var superSamplingColor = Color(0.0, 0.0, 0.0)
+                // val offsets = sampler.generateSamples()
+
+                for (offset in offsets) {
+                    val ray = camera.generateRay(x + offset.first, y + offset.second)
+                    val color = scene.colorAt(ray)
+                    superSamplingColor += color
+                }
+
+                val pixelColor = superSamplingColor / sampler.count.toDouble()
+                canvas.setPixel(x, y, pixelColor)
+            }
+        }
+
+        return canvas
+    }
+
+
 }

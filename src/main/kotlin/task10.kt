@@ -39,7 +39,7 @@ fun main() {
     scene.getObjects()[1].material.reflectance = 1.0
     scene.getObjects()[2].material.reflectance = 1.0
     scene.getObjects()[3].material.reflectance = 1.0
-    saveSceneCanvasFromCamera("task10_1", scene, width, height, fov, position, lookAt, up)
+    // saveSceneCanvasFromCamera("task10_1", scene, width, height, fov, position, lookAt, up)
 
     // Settings for task10_2
     // Здесь отражается только земля и левый шар. Глубина рекурсии была ограничена до 1.
@@ -48,6 +48,26 @@ fun main() {
     // Отражающие свойства центрального и правого шара поменяем на 0.0, чтоб не отражали
     scene.getObjects()[0].material.reflectance = 0.0
     scene.getObjects()[1].material.reflectance = 0.0
-    saveSceneCanvasFromCamera("task10_2", scene, width, height, fov, position, lookAt, up)
+    // saveSceneCanvasFromCamera("task10_2", scene, width, height, fov, position, lookAt, up)
+
+    println("NoSampler ")
+    println(scene.sampler)
+    println(scene.sampler.count)
+    println(scene.sampler.generateSamples())
+
+    scene.sampler = RandomSampler()
+    println("RandomSampler ")
+    println(scene.sampler)
+    println(scene.sampler.count)
+    println(scene.sampler.generateSamples())
+    // saveSceneCanvasFromCamera("task10_3", scene, width, height, fov, position, lookAt, up)
+
+    scene.sampler = OffsetSampler()
+    println("OffsetSampler ")
+    println(scene.sampler)
+    println(scene.sampler.count)
+    println(scene.sampler.generateSamples())
+    println(scene.sampler.count)
+    // saveSceneCanvasFromCamera("task10_4", scene, width, height, fov, position, lookAt, up)
 
 }

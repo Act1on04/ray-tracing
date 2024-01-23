@@ -1,0 +1,47 @@
+import kotlin.random.Random
+
+const val SAMPLING_COUNT = 9
+
+abstract class  Sampler() {
+
+    var count = SAMPLING_COUNT
+
+    constructor(cnt: Int) : this() {
+        this.count = cnt
+    }
+
+    abstract fun generateSamples(): List<Pair<Double, Double>>
+}
+
+class NoSampler : Sampler(1) {
+    override fun generateSamples(): List<Pair<Double, Double>> {
+        return listOf(Pair(0.0, 0.0))
+    }
+}
+
+// Для OffsetSampler в качестве параметра указываем не количество точек, а размерность сетки (по умолчанию 3х3)
+class OffsetSampler(cnt: Int = 3) : Sampler(cnt) {
+    override fun generateSamples(): List<Pair<Double, Double>> {
+        val step = 1.0 / count
+        val halfStep = step / 2.0
+        val samples = mutableListOf<Pair<Double, Double>>()
+
+        for (y in 0 until count) {
+            for (x in 0 until count) {
+                val offsetX = (x * step) + halfStep - 0.5
+                val offsetY = (y * step) + halfStep - 0.5
+                samples.add(Pair(offsetX, offsetY))
+            }
+        }
+        // тут меняем счётчик чтобы потом в вычислениях получить правильное количество точек в сетке
+        count *= count
+        return samples
+    }
+}
+
+class RandomSampler(cnt: Int = SAMPLING_COUNT) : Sampler(cnt) {
+
+    override fun generateSamples(): List<Pair<Double, Double>> {
+        return List(count) { Pair(Random.nextDouble(-0.5, 0.5), Random.nextDouble(-0.5, 0.5)) }
+    }
+}
