@@ -5,20 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="19d009db-2e0f-4bd7-90ec-5d9bb3e86912" name="Changes" comment="Lab9_2 Update task09 delete comments">
-      <change afterPath="$PROJECT_DIR$/src.rar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/HitInfo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/HitInfo.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Intersection.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Intersection.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Material.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Material.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/RayTracer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/RayTracer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Scene.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Scene.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/task09.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/task09.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/MaterialTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/MaterialTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/SceneTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/SceneTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task09_10.png" beforeDir="false" afterPath="$PROJECT_DIR$/task09_10.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task09_11.png" beforeDir="false" afterPath="$PROJECT_DIR$/task09_11.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task09_12.png" beforeDir="false" afterPath="$PROJECT_DIR$/task09_12.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task09_13.png" beforeDir="false" afterPath="$PROJECT_DIR$/task09_13.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Sampler.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Sampler.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/task10.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/task10.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task10_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/task10_3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task10_4.png" beforeDir="false" afterPath="$PROJECT_DIR$/task10_4.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +44,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Lab9_2" />
+        <entry key="$PROJECT_DIR$" value="Lab10" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -115,7 +106,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.MaterialTest.Reflectivity for the default material">
+  <component name="RunManager" selected="Kotlin.Task10Kt">
     <configuration name="MaterialTest.Reflectivity for the default material" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -139,17 +130,6 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <ForceTestExec>true</ForceTestExec>
       <method v="2" />
-    </configuration>
-    <configuration name="LightSourceTest and 1 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ray-tracing.test" />
-      <option name="TEST_OBJECT" value="pattern" />
-      <patterns>
-        <pattern testClass="LightSourceTest" />
-        <pattern testClass="PointLightSourceTest" />
-      </patterns>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration name="LightSourceTest and 2 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ray-tracing.test" />
@@ -183,13 +163,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Task10Kt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Task10Kt" />
+      <module name="ray-tracing.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.MaterialTest.Reflectivity for the default material" />
+        <item itemvalue="Kotlin.Task10Kt" />
         <item itemvalue="Kotlin.Task09Kt" />
         <item itemvalue="JUnit.SceneTest and 3 more" />
         <item itemvalue="JUnit.LightSourceTest and 2 more" />
-        <item itemvalue="JUnit.LightSourceTest and 1 more" />
+        <item itemvalue="Gradle.MaterialTest.Reflectivity for the default material" />
       </list>
     </recent_temporary>
   </component>

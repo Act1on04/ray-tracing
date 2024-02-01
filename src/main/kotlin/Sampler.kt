@@ -33,14 +33,13 @@ class NoSampler : Sampler(1) {
 // Для OffsetSampler в качестве параметра указываем не количество точек, а размерность сетки (по умолчанию 3х3)
 class OffsetSampler(cnt: Int = 3) : Sampler(cnt) {
     override fun generateSamples(): List<Pair<Double, Double>> {
-        val step = 1.0 / count
-        val halfStep = step / 2.0
+        val step = 1.0 / (count - 1)
         val samples = mutableListOf<Pair<Double, Double>>()
 
         for (y in 0 until count) {
             for (x in 0 until count) {
-                val offsetX = (x * step) + halfStep - 0.5
-                val offsetY = (y * step) + halfStep - 0.5
+                val offsetX = x * step - 0.5
+                val offsetY = y * step - 0.5
                 samples.add(Pair(offsetX, offsetY))
             }
         }

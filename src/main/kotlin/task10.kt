@@ -42,7 +42,7 @@ fun main() {
     scene.getObjects()[3].material.reflectance = 1.0
     // Task 10_1
     val time1 = measureTimeMillis {
-        saveSceneCanvasFromCamera("task10_1", scene, width, height, fov, position, lookAt, up)
+        // saveSceneCanvasFromCamera("task10_1", scene, width, height, fov, position, lookAt, up)
     }
     println("Time for task10_1: %.1f seconds".format(time1 / 1000.0))
 
@@ -54,7 +54,7 @@ fun main() {
     scene.getObjects()[0].material.reflectance = 0.0
     scene.getObjects()[1].material.reflectance = 0.0
     val time2 = measureTimeMillis {
-        saveSceneCanvasFromCamera("task10_2", scene, width, height, fov, position, lookAt, up)
+        // saveSceneCanvasFromCamera("task10_2", scene, width, height, fov, position, lookAt, up)
     }
     println("Time for task10_2: %.1f seconds".format(time2 / 1000.0))
 
@@ -62,12 +62,12 @@ fun main() {
     scene.sampler = RandomSampler()
     println("RandomSampler ")
     val time3 = measureTimeMillis {
-        saveSceneCanvasFromCamera("task10_3", scene, width, height, fov, position, lookAt, up)
+        // saveSceneCanvasFromCamera("task10_3", scene, width, height, fov, position, lookAt, up)
     }
     println("Time for task10_3: %.1f seconds".format(time3 / 1000.0))
 
     // Settings for task10_4
-    scene.sampler = OffsetSampler()
+    scene.sampler = OffsetSampler(5)
     println("OffsetSampler ")
     val time4 = measureTimeMillis {
         saveSceneCanvasFromCamera("task10_4", scene, width, height, fov, position, lookAt, up)
