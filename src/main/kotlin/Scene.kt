@@ -6,6 +6,8 @@ class Scene {
     private val lights: MutableList<LightSource> = mutableListOf()
     private var backGround: Color = Color.fromInt(0x00cdff)
     private var depth: Int = MAX_RECURSION
+    var sampler: Sampler = NoSampler()
+
 
     fun getBackGround(): Color {
         return backGround
@@ -103,11 +105,11 @@ class Scene {
     }
 
     fun colorAt(ray: Ray, depth: Int = getDepth()): Color {
-        val intersections = traceRay(ray);
+        val intersections = traceRay(ray)
         val hit = intersections.hit() ?: return getBackGround()// Color.BLACK;
-        val hitInfo = hit.prepareHitInfo(ray);
-        val color = shadeHit(hitInfo, depth);
-        return color;
+        val hitInfo = hit.prepareHitInfo(ray)
+        val color = shadeHit(hitInfo, depth)
+        return color
     }
 
     private fun reflectedColor(hitInfo: HitInfo, depth: Int): Color {
@@ -179,7 +181,10 @@ class Scene {
             val rayTracer = RayTracer(scene, camera)
 
             // Canvas in Datei schreiben
-            val canvas = rayTracer.render()
+            // val canvas = rayTracer.render()
+            // Лаба 10 Тут используем Рендер с параметрами для сглаживания
+            val canvas = rayTracer.render(scene.sampler)
+
             canvas.writeToFile(fileName)
 
         }

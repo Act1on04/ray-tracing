@@ -1,4 +1,5 @@
 import Scene.Companion.saveSceneCanvasFromCamera
+import kotlin.system.measureTimeMillis
 
 fun main() {
 
@@ -14,7 +15,7 @@ fun main() {
     scene.getObjects()[0].material.color = Color.fromInt(0x00FF00)
     scene.getObjects()[1].material.color = Color.fromInt(0xFFFF00)
     scene.getObjects()[2].material.color = Color.fromInt(0xFF1493)
-    // Цвет фона сделаем чёрым, а не синим. Так лучше смотрится.
+    // Цвет фона сделаем чёрным, а не синим. Так лучше смотрится.
     scene.setBackGround(Color.BLACK)
     // Уберём точечный свет и поставим направленный, так как при точечном сильно тускло
     scene.clearLights()
@@ -27,7 +28,7 @@ fun main() {
     val lookAt = Point(0, 1, 0)
     val up = Vector(0, 1, 0)
     val fov = 60.0
-    var width = 800
+    val width = 800
     val height = 400
 
 
@@ -39,7 +40,11 @@ fun main() {
     scene.getObjects()[1].material.reflectance = 1.0
     scene.getObjects()[2].material.reflectance = 1.0
     scene.getObjects()[3].material.reflectance = 1.0
-    saveSceneCanvasFromCamera("task10_1", scene, width, height, fov, position, lookAt, up)
+    // Task 10_1
+    val time1 = measureTimeMillis {
+        saveSceneCanvasFromCamera("task10_1", scene, width, height, fov, position, lookAt, up)
+    }
+    println("Time for task10_1: %.1f seconds".format(time1 / 1000.0))
 
     // Settings for task10_2
     // Здесь отражается только земля и левый шар. Глубина рекурсии была ограничена до 1.
@@ -48,6 +53,29 @@ fun main() {
     // Отражающие свойства центрального и правого шара поменяем на 0.0, чтоб не отражали
     scene.getObjects()[0].material.reflectance = 0.0
     scene.getObjects()[1].material.reflectance = 0.0
-    saveSceneCanvasFromCamera("task10_2", scene, width, height, fov, position, lookAt, up)
+    val time2 = measureTimeMillis {
+        saveSceneCanvasFromCamera("task10_2", scene, width, height, fov, position, lookAt, up)
+    }
+    println("Time for task10_2: %.1f seconds".format(time2 / 1000.0))
+
+    // Settings for task10_3
+    scene.sampler = RandomSampler()
+    println("RandomSampler ")
+    val time3 = measureTimeMillis {
+        saveSceneCanvasFromCamera("task10_3", scene, width, height, fov, position, lookAt, up)
+    }
+    println("Time for task10_3: %.1f seconds".format(time3 / 1000.0))
+
+    // Settings for task10_4
+    scene.sampler = OffsetSampler()
+    println("OffsetSampler ")
+    val time4 = measureTimeMillis {
+        saveSceneCanvasFromCamera("task10_4", scene, width, height, fov, position, lookAt, up)
+    }
+    println("Time for task10_4: %.1f seconds".format(time4 / 1000.0))
+
+    // Total time
+    val totalTime = time1 + time2 + time3 + time4
+    println("Total time: %.1f seconds".format(totalTime / 1000.0))
 
 }

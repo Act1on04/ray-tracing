@@ -148,6 +148,8 @@ data class Color(val red:Double, val green:Double, val blue:Double) {
     operator fun times(other:Color):Color =
         Color(red * other.red, green * other.green, blue * other.blue)
 
+    operator fun div(scalar:Number): Color = Color(red / scalar.toDouble(), green / scalar.toDouble(), blue / scalar.toDouble())
+
     private fun clamp(value:Int):Int =
         when {
             value > 255 -> 255
